@@ -24,7 +24,6 @@ epname=$(basename "$dirsub")
 echo "Now Processing --- $epname"
 
 setup=$(dirname $dirsub)"/_ESSENTIAL/Setup.txt"
-mkdir $dirsub/LATEST 2>/dev/null
 rm -f $dirsub/LATEST/Translated.ass 
 rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"

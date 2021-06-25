@@ -5,14 +5,14 @@ currdir=$(dirname "$0")
 if [ ! -d $dirsub"/_ESSENTIAL" ] || [ ! -f $dirsub/output.command ]; then
 echo "initializing files"
 if [ ! -z "$(ls $currdir | grep -v $(basename $0))" ]; then mkdir $currdir"/subs" && mv "$0" $currdir"/subs/"$(basename $0) 2>/dev/null && exec $currdir"/subs/"$(basename $0); fi
-rm -f $currdir/gitclone
-git clone https://github.com/IT12666/subs_translate.git $currdir/gitclone
-mv $currdir/gitclone/.* $currdir/
-mv $currdir/gitclone/* $currdir/
-rm -rf $currdir/gitclone
+rm -f $currdir/gitclone 2>/dev/null
+git clone https://github.com/IT12666/subs_translate.git $currdir/gitclone 
+mv $currdir/gitclone/.* $currdir/ 2>/dev/null
+mv $currdir/gitclone/* $currdir/ 2>/dev/null
+rm -rf $currdir/gitclone 2>/dev/null
 echo cloned setup files
 setup=$currdir/_ESSENTIAL/Setup.txt
-for epname in $(grep -F "." $setup | cut -d '.' -f1 | sort | uniq ); do mkdir -p $currdir"/"$epname"/"$(grep -F $epname".nextep=" $setup | cut -d "=" -f2); done
+for epname in $(grep -F "." $setup | cut -d '.' -f1 | sort | uniq ); do mkdir -p $currdir"/"$epname"/"$(grep -F $epname".nextep=" $setup | cut -d "=" -f2) && ; done
 echo episode dirertory created
 
 else

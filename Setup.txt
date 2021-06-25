@@ -1,0 +1,10 @@
+Doraemon.keywords=蓝胖子
+Chibimaruko.keywords=小丸子
+Doraemon.title=哆啦A夢 新番 
+Chibimaruko.title=櫻桃小丸子 
+Doraemon.desc=哆啦A夢 新番 日語 繁體中文字幕\n主頻道：https://www.youtube.com/channel/UC-4WJFw0IJwrOlv2zQBwUZQ\n\n--------------\n
+Chibimaruko.desc=櫻桃小丸子 日語 繁體中文字幕\n--------------\n
+Doraemon.search=哆啦A夢 新番 日語 繁體中文字幕
+Chibimaruko.search=Chibimaruko, 櫻桃小丸子, 日語繁中, Japanese, Kartoon
+Doraemon.pic=https://spee.ch/a/e41f0dc4f4395a47.png
+Chibimaruko.pic=https://spee.ch/c/a071a5ccd1360c3d.png
