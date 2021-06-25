@@ -1,0 +1,23 @@
+
+
+
+
+
+
+Now Processing --- Chibimaruko
+dir setup complete
+/Users/ansoncheng/subs/Chibimaruko//LATEST -> /users/ansoncheng/subs/chibimaruko//latest
+/Users/ansoncheng/subs/Chibimaruko//LATEST/Source.ass -> /users/ansoncheng/subs/chibimaruko//latest/source.ass
+/Users/ansoncheng/subs/Chibimaruko//LATEST/Source.mp4 -> /users/ansoncheng/subs/chibimaruko//latest/source.mp4
+/Users/ansoncheng/subs/Chibimaruko//LATEST/.ds_store -> /users/ansoncheng/subs/chibimaruko//latest/.ds_store
+/Users/ansoncheng/subs/Chibimaruko//LATEST/test.txt -> /users/ansoncheng/subs/chibimaruko//latest/test.txt
+files preparation completed
+dir checking complete
+translated font
+changed Aegisub dir
+style transformed
+translated text
+title grabbed (「小丸子思考梅雨的好處」篇 + 「小玉父親節的禮物」篇 )
+translate text fixed
+Test Mode - NOT moving any files
+making production
