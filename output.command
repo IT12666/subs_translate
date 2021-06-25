@@ -24,12 +24,13 @@ epname=$(basename "$dirsub")
 echo "Now Processing --- $epname"
 
 setup=$(dirname $dirsub)"/_ESSENTIAL/Setup.txt"
+mkdir $dirsub/LATEST 2>/dev/null
 rm -f $dirsub/LATEST/Translated.ass 
 rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"
 
 for f in `find $dirsub/LATEST`; do mv -v "$f" "`echo $f | tr '[A-Z]' '[a-z]'`" ; done
-mv $dirsub/latest $dirsub/LATEST
+mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
 mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
 mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
@@ -53,7 +54,7 @@ echo "style transformed"
 opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
 
-title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed 's/.*,,0,0,0,,//' | rev | cut -d ')' -f1 | cut -d '}' -f1 | rev | uniq | paste -sd '|' - | tr -dc '[:print:]'| sed 's/ //g' | sed 's/|/ + /g' | sed 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
+title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed 's/.*,,0,0,0,,//' | rev | cut -d ')' -f1 | cut -d '}' -f1 | rev | sort | uniq | paste -sd '|' - | tr -dc '[:print:]'| sed 's/ //g' | sed 's/|/ + /g' | sed 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed -i '' "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
