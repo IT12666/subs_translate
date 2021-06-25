@@ -20,3 +20,5 @@ echo "checking for update"
 echo "git check started"
 
 fi
+
+find $currdir -type f -iname "*.command" -exec chmod u+x {} \;
