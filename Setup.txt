@@ -10,3 +10,4 @@ Doraemon.pic=https://spee.ch/a/e41f0dc4f4395a47.png
 Chibimaruko.pic=https://spee.ch/c/a071a5ccd1360c3d.png
 Doraemon.nextep=661
 Chibimaruko.nextep=1294
+Sys.updated=1
