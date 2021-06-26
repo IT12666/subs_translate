@@ -8,3 +8,5 @@ Doraemon.search=哆啦A夢 新番 日語 繁體中文字幕
 Chibimaruko.search=Chibimaruko, 櫻桃小丸子, 日語繁中, Japanese, Kartoon
 Doraemon.pic=https://spee.ch/a/e41f0dc4f4395a47.png
 Chibimaruko.pic=https://spee.ch/c/a071a5ccd1360c3d.png
+Doraemon.nextep=661
+Chibimaruko.nextep=1294
