@@ -88,6 +88,7 @@ echo "https://odysee.com/$/upload"
 fi
 done | tee $currdir/_ESSENTIAL/log.txt
 echo -e "\n"
+echo $setup
 sed -i '' '/Sys.updated/d' $setup
 read -n 1 -s -r -p 'done'
 exit 0
