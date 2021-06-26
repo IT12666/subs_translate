@@ -4,7 +4,7 @@ currdir=$(dirname "$0")
 rm -f $currdir/*.zip
 
 download() { 
-curl -L -o $currdir/$1.zip https://github.com/IT12666/subs_translate/archive/refs/heads/$1.zip $currdir
+curl -s -L -o $currdir/$1.zip https://github.com/IT12666/subs_translate/archive/refs/heads/$1.zip $currdir
 unzip -qq -o $currdir"/"$1".zip" -d $currdir"/" 
 rm -f $currdir/$1.zip 
 mv $currdir"/subs_translate-"$1 $currdir"/"$1;}
