@@ -18,6 +18,8 @@ dep_check() { if ! command -v $1 > /dev/null; then echo $1 is missing
 read -t 4 -n 1 -p "do you want to install $1? [Y]/N : " install
 : "${install:=Y}" && echo -e "\n" && if [ "$install" == "Y" ]; then echo "Installing $1" && eval $2; else echo "Dependency: $1, exiting" && exit 0 ; fi; fi }
 
+sed $SEDOPTION '/Sys.updated/d' $setup
+
 dep_check 'opencc' 'brew install opencc'
 dep_check 'ffmpeg' 'brew install ffmpeg'
 if ! command -v $1 > /dev/null; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
@@ -108,7 +110,6 @@ echo "https://odysee.com/$/upload"
 fi
 done | tee $currdir/_ESSENTIAL/log.txt
 echo -e "\n"
-sed $SEDOPTION '/Sys.updated/d' $setup
 read -n 1 -s -r -p 'done'
 exit 0
 
