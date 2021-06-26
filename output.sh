@@ -2,10 +2,13 @@
 
 currdir=$(dirname "$0")
 setup=$currdir/_ESSENTIAL/Setup.txt
-if [[ ! -f $setup ]]; then mkdir -p $currdir/_ESSENTIAL/ && touch /Scripts/file.txt; fi
-if [ "$(grep -F "Sys.updated=" $setup | cut -d "=" -f2)" == "1" ]; then echo "Latest Version"
-else curl -s -L -o $currdir/update.sh https://raw.githubusercontent.com/IT12666/subs_translate/scripts/update.sh $currdir
-chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exec $currdir/update.sh; fi 
+
+runupdate() { curl -s -L -o $currdir/update.sh https://raw.githubusercontent.com/IT12666/subs_translate/scripts/update.sh $currdir
+chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exec $currdir/update.sh
+}
+
+if [[ ! -f $setup ]]; then runupdate; fi
+if [ "$(grep -F "Sys.updated=" $setup | cut -d "=" -f2)" == "1" ]; then echo "Latest Version"; else runupdate; fi 
 
 dep_check() { if ! command -v $1 > /dev/null; then echo $1 is missing
 read -t 4 -n 1 -p "do you want to install $1? [Y]/N : " install
