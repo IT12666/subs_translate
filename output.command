@@ -15,8 +15,8 @@ dep_check 'ffmpeg' 'brew install ffmpeg'
 echo "dependency checked"
 
 
-rm -f $(dirname "$0")/_ESSENTIAL/log.txt
-for dirsub in $(echo $(dirname "$0")/*/) ; do
+rm -f $currdir/_ESSENTIAL/log.txt
+for dirsub in $(echo $currdir/*/) ; do
 if [ -d $dirsub"/LATEST" ] 
 then
 #loop start
@@ -86,9 +86,9 @@ echo "https://odysee.com/$/upload"
 
 #back to loop
 fi
-done | tee $(dirname "$0")/_ESSENTIAL/log.txt
+done | tee $currdir/_ESSENTIAL/log.txt
 echo -e "\n"
-sed -i '/Sys.updated/d' 
+sed -i '/Sys.updated/d' $setup
 read -n 1 -s -r -p 'done'
 exit 0
 
