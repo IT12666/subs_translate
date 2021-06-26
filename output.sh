@@ -2,6 +2,7 @@
 
 
 #SYSTEM PRESET
+echo 1.2.3
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-e"; fi
 
 currdir=$(dirname "$0")
