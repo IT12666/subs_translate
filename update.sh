@@ -42,5 +42,5 @@ scriptup 2>/dev/null
 fi
 
 find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
-rm -f $0
+echo rm -f $0
 exec $currdir/output.sh
