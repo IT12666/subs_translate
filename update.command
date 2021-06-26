@@ -6,8 +6,7 @@ if [ ! -d $currdir"/_ESSENTIAL" ] || [ ! -f $currdir/output.command ]; then
 echo "initializing files"
 if [ ! -z "$(ls $currdir | grep -v $(basename $0))" ]; then mkdir $currdir"/subs" && mv "$0" $currdir"/subs/"$(basename $0) 2>/dev/null && exec $currdir"/subs/"$(basename $0); fi
 rm -f $currdir/gitclone 2>/dev/null
-#read
-git clone https://github.com/IT12666/subs_translate.git $currdir/gitclone 
+curl https://github.com/IT12666/subs_translate/archive/refs/heads/scripts.zip
 mv $currdir/gitclone/.* $currdir/ 2>/dev/null
 mv $currdir/gitclone/* $currdir/ 2>/dev/null
 rm -rf $currdir/gitclone 2>/dev/null
