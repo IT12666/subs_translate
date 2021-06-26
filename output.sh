@@ -53,18 +53,18 @@ echo "files preparation completed"
 if [ ! -f $dirsub/LATEST/Source.ass ] || [ ! -f $dirsub/LATEST/Source.mp4 ] ; then echo "Error: no file found" && continue; fi
 if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATEST/Source.ass; then echo "dir checking complete"; else rm -f $dirsub/LATEST/Translated.ass && echo "Error: no keyword found" && continue; fi
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && echo sed $SEDOPTION "'""s!$source!$result!g""'"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
+while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "'""s!$source!$result!g""'"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
 echo "translated font"
 read
 
 
 
 filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed 's/Video File: //g')
-sed $SEDOPTION "s!$filech!Source.mp4!"  $dirsub/LATEST/Translated.ass
+sed $SEDOPTION "'""s!$filech!Source.mp4!""'"  $dirsub/LATEST/Translated.ass
 echo "changed Aegisub dir"
 
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Style.txt"
+while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "'""s!$source!$result!g""'"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Style.txt"
 echo "style transformed"
 
 
@@ -76,7 +76,7 @@ title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | aw
 echo "title grabbed ($title)"
 
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
+while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "'""s!$source!$result!g""'"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
 echo "translate text fixed"
 
 
@@ -112,10 +112,3 @@ sed $SEDOPTION '/Sys.updated/d' $setup
 read -n 1 -s -r -p 'done'
 exit 0
 
-
-
-#echo 'export subs_op=' >> ~/.bash_profile
-#awk '{print;print;}' /Users/ansoncheng/subs/YY_Doraemon/LATEST/Untitled.ass > /Users/ansoncheng/subs/YY_Doraemon/LATEST/Untitled1.ass  
-#cat /Users/ansoncheng/subs/YY_Doraemon/LATEST/Untitled1.ass| grep -o '^.*,' |rev |awk 'NR%2{$0="some text "$0}1'|rev > /Users/ansoncheng/subs/YY_Doraemon/LATEST/Untitled2.ass 
-#sed $SEDOPTION 's!Default,,0,0,0,, txet emos![蓝胖子]对白-ch,,0,0,0,,!'  /Users/ansoncheng/subs/YY_Doraemon/LATEST/Untitled2.ass 
-#sed $SEDOPTION 's!Default,,0,0,0,,![蓝胖子]对白-JP,,0,0,0,,!'  /Users/ansoncheng/subs/YY_Doraemon/LATEST/Untitled2.ass 
