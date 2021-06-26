@@ -3,10 +3,7 @@
 currdir=$(dirname "$0")
 setup=$currdir/_ESSENTIAL/Setup.txt
 if [ "$(grep -F "Sys.updated=" $setup | cut -d "=" -f2)" == "1" ]; then echo "Latest Version"
-else curl -L -o $currdir/update.sh https://github.com/IT12666/subs_translate/releases/download/0.0.0/update.sh $currdir 
-chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exec $currdir/update.sh 
-echo rm -f $currdir/update.sh
-fi 
+else curl -L -o $currdir/update.sh https://github.com/IT12666/subs_translate/releases/download/0.0.0/update.sh $currdir && chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exec $currdir/update.sh; fi 
 
 dep_check() { if ! command -v $1 > /dev/null; then echo $1 is missing
 read -t 4 -n 1 -p "do you want to install $1? [Y]/N : " install
