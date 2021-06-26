@@ -22,8 +22,6 @@ then
 #loop start
 
 echo -e "\n"
-echo -e "\n"
-echo -e "\n"
 epname=$(basename "$dirsub")
 echo "Now Processing --- $epname"
 
@@ -88,7 +86,6 @@ echo "https://odysee.com/$/upload"
 fi
 done | tee $currdir/_ESSENTIAL/log.txt
 echo -e "\n"
-echo $setup
 sed -i '' '/Sys.updated/d' $setup
 read -n 1 -s -r -p 'done'
 exit 0
