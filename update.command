@@ -3,8 +3,9 @@
 currdir=$(dirname "$0")
 rm -f $currdir/*.zip
 
-download() { curl -L -o $currdir/$1.zip https://github.com/IT12666/subs_translate/archive/refs/heads/$1.zip $currdir
-unzip -o -qq $currdir"/"$1".zip" -d $currdir"/" 
+download() { 
+curl -L -o $currdir/$1.zip https://github.com/IT12666/subs_translate/archive/refs/heads/$1.zip $currdir
+unzip -qq -o $currdir"/"$1".zip" -d $currdir"/" 
 rm -f $currdir/$1.zip 
 mv $currdir"/subs_translate-"$1 $currdir"/"$1;}
 
@@ -34,9 +35,9 @@ for epname in $(grep -F "." $setup | cut -d '.' -f1 | sort | uniq ); do mkdir -p
 echo episode dirertory created
 
 else
-download 'scripts' #2>/dev/null
+download 'scripts' 2>/dev/null
 echo fetched from server
-scriptup #2>/dev/null
+scriptup 2>/dev/null
 
 fi
 
