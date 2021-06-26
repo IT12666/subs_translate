@@ -8,7 +8,10 @@ unzip -o -qq $currdir"/"$1".zip" -d $currdir"/"
 rm -f $currdir/$1.zip 
 mv $currdir"/subs_translate-"$1 $currdir"/"$1;}
 
-scriptup() { mv $currdir/scripts/.* $currdir/ 
+scriptup() { 
+rm -rf $currdir/Replacement
+rm -rf $currdir/_ESSENTIAL/Replacement
+mv $currdir/scripts/.* $currdir/ 
 mv $currdir/scripts/* $currdir/ && rm -rf $currdir/scripts 
 mv $currdir/Replacement $currdir/_ESSENTIAL/Replacement 
 mv $currdir/Setup.txt $currdir/_ESSENTIAL/Setup.txt 
@@ -31,7 +34,7 @@ for epname in $(grep -F "." $setup | cut -d '.' -f1 | sort | uniq ); do mkdir -p
 echo episode dirertory created
 
 else
-download 'scripts' 2>/dev/null
+download 'scripts' #2>/dev/null
 echo fetched from server
 scriptup #2>/dev/null
 
