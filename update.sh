@@ -22,7 +22,7 @@ if [ ! -d $currdir"/_ESSENTIAL" ] || [ ! -f $currdir/output.sh ]; then
 echo "initializing files"
 
 
-if [ ! -z "$(ls $currdir | grep -v $(basename $0))" ]; then mkdir $currdir"/subs" && mv "$0" $currdir"/subs/"$(basename $0) 2>/dev/null && echo "Directory is not empty, creating directory" && exec $currdir"/subs/"$(basename $0); fi
+if [ ! -z "$(ls $currdir | grep -v $(basename $0) | grep -v "output.sh")" ]; then mkdir $currdir"/subs" && mv "$0" $currdir"/subs/"$(basename $0) 2>/dev/null && echo "Directory is not empty, creating directory" && exec $currdir"/subs/"$(basename $0); fi
 rm -f $currdir/*/ 2>/dev/null
 download '_ESSENTIAL' 2>/dev/null
 download 'scripts' 2>/dev/null
