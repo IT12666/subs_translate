@@ -42,6 +42,6 @@ scriptup 2>/dev/null
 fi
 read
 find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
-echo rm -f $0
+rm -f $0
 read
 exec $currdir/output.sh
