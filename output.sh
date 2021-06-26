@@ -8,7 +8,7 @@ chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exe
 }
 
 brewinstall() {
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </dev/null
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /root/.profile
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 }
