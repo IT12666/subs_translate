@@ -2,16 +2,18 @@
 
 currdir=$(dirname "$0")
 
+download() {curl -L -o $currdir/$1.zip && https://github.com/IT12666/subs_translate/archive/refs/heads/$1.zip $currdir 2>/dev/null && unzip -o -qq $currdir/$1.zip -d $currdir/ 2>/dev/null && rm -f $currdir/$1.zip 2>/dev/null}
+
 if [ ! -d $currdir"/_ESSENTIAL" ] || [ ! -f $currdir/output.command ]; then
 echo "initializing files"
 if [ ! -z "$(ls $currdir | grep -v $(basename $0))" ]; then mkdir $currdir"/subs" && mv "$0" $currdir"/subs/"$(basename $0) 2>/dev/null && echo "Directory is not empty, creating directory" && exec $currdir"/subs/"$(basename $0); fi
 rm -f $currdir/*/ 2>/dev/null
 
-curl -L -o $currdir/_ESSENTIAL.zip https://github.com/IT12666/subs_translate/archive/refs/heads/_ESSENTIAL.zip $currdir 2>/dev/null
-curl -L -o $currdir/scripts.zip https://github.com/IT12666/subs_translate/archive/refs/heads/scripts.zip $currdir 2>/dev/null
-unzip -o -qq $currdir/*.zip 2>/dev/null -d $currdir/ && rm -f $currdir/*.zip 2>/dev/null
 
-for renamedir in $(echo $(dirname "$0")/*/)
+download '_ESSENTIAL'
+download 'scripts'
+
+for renamedir in $(echo $currdir/*/)
 do mv $renamedir $(dirname $renamedir)"/"$(echo $renamedir | rev | cut -d "-" -f1 | rev)
 done
 mv $currdir/scripts/.* $currdir/ 2>/dev/null
