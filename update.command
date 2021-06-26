@@ -1,8 +1,10 @@
 #!/bin/bash
 
 currdir=$(dirname "$0")
+rm -f $currdir/*.zip
 
-download() {curl -L -o $currdir/$1.zip && https://github.com/IT12666/subs_translate/archive/refs/heads/$1.zip $currdir 2>/dev/null && unzip -o -qq $currdir/$1.zip -d $currdir/ 2>/dev/null && rm -f $currdir/$1.zip 2>/dev/null}
+download() { curl -L -o $currdir/$1.zip https://github.com/IT12666/subs_translate/archive/refs/heads/$1.zip $currdir
+unzip -o -qq $currdir"/"$1".zip" -d $currdir"/" && rm -f $currdir/$1.zip && mv $currdir"/subs_translate-"$1 $currdir"/"$1;}
 
 if [ ! -d $currdir"/_ESSENTIAL" ] || [ ! -f $currdir/output.command ]; then
 echo "initializing files"
@@ -10,18 +12,17 @@ if [ ! -z "$(ls $currdir | grep -v $(basename $0))" ]; then mkdir $currdir"/subs
 rm -f $currdir/*/ 2>/dev/null
 
 
-download '_ESSENTIAL'
+#download '_ESSENTIAL' 2>/dev/null
 download 'scripts'
+read
 
-for renamedir in $(echo $currdir/*/)
-do mv $renamedir $(dirname $renamedir)"/"$(echo $renamedir | rev | cut -d "-" -f1 | rev)
-done
+
 mv $currdir/scripts/.* $currdir/ 2>/dev/null
 mv $currdir/scripts/* $currdir/ 2>/dev/null
 
 echo fetched from server
 
-read
+read 
 
 mv $currdir/Replacement $currdir/_ESSENTIAL/Replacement
 mv $currdir/Setup.txt $currdir/_ESSENTIAL/Setup.txt
