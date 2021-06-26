@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo 1.2.5
 
 #SYSTEM PRESET
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-E"; fi
