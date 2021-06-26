@@ -18,7 +18,7 @@ mv $currdir/Replacement $currdir/_ESSENTIAL/Replacement
 mv $currdir/Setup.txt $currdir/_ESSENTIAL/Setup.txt 
 echo preference and script updated;}
 
-if [ ! -d $currdir"/_ESSENTIAL" ] || [ ! -f $currdir/output.command ]; then
+if [ ! -d $currdir"/_ESSENTIAL" ] || [ ! -f $currdir/output.sh ]; then
 echo "initializing files"
 
 
@@ -41,5 +41,5 @@ scriptup 2>/dev/null
 
 fi
 
-find $currdir -type f -iname "*.command" -exec chmod u+x {} \;
-exec $currdir/output.command
+find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
+exec $currdir/output.sh
