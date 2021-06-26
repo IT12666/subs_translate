@@ -40,8 +40,6 @@ echo fetched from server
 scriptup 2>/dev/null
 
 fi
-read
 find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
 rm -f $0
-read
 exec $currdir/output.sh
