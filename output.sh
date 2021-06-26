@@ -57,7 +57,7 @@ if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATE
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
 echo "translated font"
-read
+
 
 
 
@@ -68,7 +68,7 @@ echo "changed Aegisub dir"
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Style.txt"
 echo "style transformed"
-
+read
 
 opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
