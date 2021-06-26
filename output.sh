@@ -33,13 +33,13 @@ then
 echo -e "\n"
 epname=$(basename "$dirsub")
 echo "Now Processing --- $epname"
-read
+
 
 setup=$(dirname $dirsub)"/_ESSENTIAL/Setup.txt"
 rm -f $dirsub/LATEST/Translated.ass 
 rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"
-read
+
 
 for f in `find $dirsub/LATEST`; do mv -v "$f" "`echo $f | tr '[A-Z]' '[a-z]'`" ; done 2>/dev/null
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
@@ -48,36 +48,36 @@ mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
 mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
 cp $dirsub/LATEST/Source.ass $dirsub/LATEST/Translated.ass 2>/dev/null
 echo "files preparation completed"
-read
+
 
 if [ ! -f $dirsub/LATEST/Source.ass ] || [ ! -f $dirsub/LATEST/Source.mp4 ] ; then echo "Error: no file found" && continue; fi
 if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATEST/Source.ass; then echo "dir checking complete"; else rm -f $dirsub/LATEST/Translated.ass && echo "Error: no keyword found" && continue; fi
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
 echo "translated font"
-read
+
 
 
 filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed 's/Video File: //g')
 sed $SEDOPTION "s!$filech!Source.mp4!"  $dirsub/LATEST/Translated.ass
 echo "changed Aegisub dir"
-read
+
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Style.txt"
 echo "style transformed"
-read
+
 
 opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
-read
+
 
 title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed 's/.*,,0,0,0,,//' | rev | cut -d ')' -f1 | cut -d '}' -f1 | rev | sort | uniq | paste -sd '|' - | tr -dc '[:print:]'| sed 's/ //g' | sed 's/|/ + /g' | sed 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
-read
+
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
 echo "translate text fixed"
-read
+
 
 if [ ! -f $dirsub/LATEST/test.txt ]; then mv $dirsub/LATEST/ "$dirsub/"$((1+$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}'))) && mkdir $dirsub/LATEST && dirsub=$dirsub/$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}') && echo "Moved dir to "$(echo $dirsub | grep -o '[^/]*$'); else echo 'Test Mode - NOT moving any files' && dirsub=$dirsub/LATEST; fi
 
@@ -85,11 +85,11 @@ echo "making production"
 ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass:fontsdir="$currdir/_ESSENTIAL/TRAD_FONT/" $dirsub/Final.mp4 -y
 #-loglevel warning
 echo "output complete"
-read
+
 
 title=$(echo $dirsub | grep -o '[^/]*$')"【"$title"】"
 echo "title complete"
-read
+
 
 
 echo -e "\n"
