@@ -43,6 +43,9 @@ rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"
 
 
+echo $(find $dirsub/LATEST -type f)
+
+
 for f in $(find $dirsub/LATEST -type f); do echo mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
 #for f in $(ls -d -1 $dirsub/LATEST); do echo mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
 
