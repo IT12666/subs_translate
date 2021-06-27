@@ -42,18 +42,18 @@ rm -f $dirsub/LATEST/Translated.ass
 rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"
 
-
-echo $(find $dirsub/LATEST -type f)
-
-
-for f in $(find $dirsub/LATEST -type f); do echo mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
-#for f in $(ls -d -1 $dirsub/LATEST); do echo mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
-
+for f in $dirsub/LATEST/*\ *; do mv "$f" "${f// /_}"; done
 
 read -p 'a'
 read -p 'b'
-read -p 'c'
 
+for f in $(find $dirsub/LATEST -type f); do echo mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
+
+
+
+read -p 'c'
+read -p 'a'
+read -p 'b'
 
 
 
