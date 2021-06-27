@@ -3,7 +3,7 @@
 echo 1.2.5
 
 #SYSTEM PRESET
-if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-n"; fi
+if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-ri"; fi
 
 currdir=$(dirname "$0")
 setup=$currdir/_ESSENTIAL/Setup.txt
