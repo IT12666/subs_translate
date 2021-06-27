@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo 1.2.5
-
 #SYSTEM PRESET
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-ri"; fi
 
@@ -74,8 +72,11 @@ opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
 
 
-title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed 's/.*,,0,0,0,,//' | rev | cut -d ')' -f1 | cut -d '}' -f1 | rev | sort | uniq | paste -sd '|' - | tr -dc '[:print:]'| sed 's/ //g' | sed 's/|/ + /g' | sed 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
+title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION 's/.*,,0,0,0,,//' | rev | cut -d ')' -f1 | cut -d '}' -f1 | rev | sort | uniq | paste -sd '|' - | tr -dc '[:print:]'| sed 's/ //g' | sed 's/|/ + /g' | sed 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
+
+read -p 'a'
+read -p 'b'
 
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
