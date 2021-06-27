@@ -109,6 +109,6 @@ echo "https://odysee.com/$/upload"
 fi
 done | tee $currdir/_ESSENTIAL/log.txt
 echo -e "\n"
-read -n 1 -s -r -p 'done'
+read -t 90 -n 1 -s -r -p 'done'
 exit 0
 
