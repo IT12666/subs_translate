@@ -37,6 +37,7 @@ echo episode dirertory created
 find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
 rm -f $0
 echo "setup complete, Please run output.sh"
+exit 0
 
 else
 download 'scripts' 2>/dev/null
@@ -47,4 +48,5 @@ fi
 
 find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
 rm -f $0
+echo "Update script end"
 exec $currdir/output.sh
