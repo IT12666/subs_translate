@@ -44,25 +44,7 @@ echo "dir setup complete"
 
 for f in $dirsub/LATEST/*的副本; do mv "$f" "${f//的副本/}"; done 2>/dev/null
 for f in $dirsub/LATEST/*\ *; do mv "$f" "${f// /}"; done 2>/dev/null
-for f in $(find $dirsub/LATEST -type f); do echo mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
-
-
-
-read -p 'c'
-read -p 'a'
-read -p 'b'
-
-
-
-
-
-
-
-
-
-
-
-
+for f in $(find $dirsub/LATEST -type f); do mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
 mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
@@ -98,6 +80,14 @@ echo "translated text"
 title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev )
 #| cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | head -n -2 | awk 'NF' | tr '\r' ',' | tr '\n' ',' | sed $SEDOPTION_L 's/,,/,/g' | sed $SEDOPTION_L 's/,/ + /g' | sed 's/.\{2\}$//')
 echo "title grabbed ($title)"
+
+
+
+read -p '213125'
+
+read -p 'b'
+
+read -p 'qgvdaegw'
 
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
