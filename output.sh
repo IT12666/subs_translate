@@ -74,30 +74,8 @@ opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
 
 
-title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | head -n -2 | awk 'NF' | tr '\r' ','| tr '\n' ',')
-
-#rm -f $dirsub/LATEST/tmp.txt
+title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | head -n -2 | awk 'NF' | tr '\r' ','| tr '\n' ',' | sed $SEDOPTION_L 's/,,/,/g' | sed $SEDOPTION_L 's/,/ + /g' )
 echo "title grabbed ($title)"
-
-echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n"
-
-
-
-
-
-# | cut -f1-2 -d"+")
-
-
-exit 0 
-
-
-
-
-
-
-
-
-
 
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
