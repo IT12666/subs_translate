@@ -1,4 +1,5 @@
 #!/bin/bash
+echo 123123
 
 #SYSTEM PRESET
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-ri"; fi
@@ -73,7 +74,7 @@ opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
 
 
-title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | sort | uniq | tr '\n' ' ' )
+title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | sort | uniq | tr '\n' '999' )
 echo $title 
 # | tr -dc '[:print:]'| sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | sed $SEDOPTION_L 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
