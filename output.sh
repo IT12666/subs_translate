@@ -74,8 +74,8 @@ opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
 
 
-title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | sort | uniq | grep -v '櫻桃小丸子')
-# | sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | sed $SEDOPTION_L 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
+title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g')
+# | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
 
 echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n"
