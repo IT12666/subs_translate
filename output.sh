@@ -42,7 +42,7 @@ rm -f $dirsub/LATEST/Translated.ass
 rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"
 
-for f in $dirsub/LATEST/*\ *; do mv "$f" "${f// /_}"; done
+for f in $dirsub/LATEST/*\ *; do mv "$f" "${f// /}"; done
 
 read -p 'a'
 read -p 'b'
