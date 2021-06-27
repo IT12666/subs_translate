@@ -76,7 +76,7 @@ echo "translated text"
 
 title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | head -n -2)
 echo "$title" > $dirsub/LATEST/tmp.txt
-cat -v $dirsub/LATEST/tmp.txt
+tr -d '\n' < $dirsub/LATEST/tmp.txt
 #| grep pattern | paste -sd'~' | sed -e 's/~/" "/g'
 title=$(cat $dirsub/LATEST/tmp.txt)
 #rm -f $dirsub/LATEST/tmp.txt
