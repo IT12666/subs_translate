@@ -1,5 +1,5 @@
 #!/bin/bash
-echo 2463
+echo 2465
 
 #SYSTEM PRESET
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-ri"; fi
@@ -76,7 +76,7 @@ echo "translated text"
 
 title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | head -n -2)
 echo "$title" > $dirsub/LATEST/tmp.txt
-temp=
+temp=""
 while read line; do $temp="$temp$line"; done < $dirsub/LATEST/tmp.txt
 
 
