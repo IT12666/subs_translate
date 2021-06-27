@@ -60,7 +60,7 @@ echo "translated font"
 
 
 
-filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed 's/Video File: //g')
+filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION 's/Video File: //g')
 sed $SEDOPTION "s!$filech!Source.mp4!"  $dirsub/LATEST/Translated.ass
 echo "changed Aegisub dir"
 
@@ -72,7 +72,7 @@ opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
 
 
-title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION 's/.*,,0,0,0,,//' | rev | cut -d ')' -f1 | cut -d '}' -f1 | rev | sort | uniq | paste -sd '|' - | tr -dc '[:print:]'| sed 's/ //g' | sed 's/|/ + /g' | sed 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
+title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION 's/.*,,0,0,0,,//' | rev | cut -d ')' -f1 | cut -d '}' -f1 | rev | sort | uniq | paste -sd '|' - | tr -dc '[:print:]'| sed $SEDOPTION 's/ //g' | sed $SEDOPTION 's/|/ + /g' | sed $SEDOPTION 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
 
 read -p 'a'
