@@ -1,6 +1,6 @@
-@FZCuYuan-M03S|PingFang HK
-A-OTF Shin Maru Go Pro M|PingFang HK
-Alibaba PuHuiTi|PingFang HK
+@FZCuYuan-M03S|PingFangHK-Regular
+A-OTF Shin Maru Go Pro M|PingFangHK-Regular
+Alibaba PuHuiTi|PingFangHK-Regular
 DFGMaruGothic-Md|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
 DFMaruGothic-Md|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
 EPSON 太丸ゴシック体Ｂ|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
@@ -9,19 +9,19 @@ FZLanTingHei-B-GBK|Gen Jyuu Gothic XP
 FZLanTingYuanS-B-GB|Gen Jyuu Gothic XP
 FZSJ-WOXWSYSD|Gen Jyuu Gothic XP
 FZYunDongHeiS-M-GB|Gen Jyuu Gothic XP
-Moonstar|PingFang HK
+Moonstar|PingFangHK-Regular
 Times New Roman|Times New Roman
 华康少女文字W5-A|DFPChuW4-B5
-微软雅黑|PingFang HK
-方正兰亭粗黑_GBK|PingFang HK
-方正喵呜体|PingFang HK
+微软雅黑|PingFangHK-Regular
+方正兰亭粗黑_GBK|PingFangHK-Regular
+方正喵呜体|PingFangHK-Regular
 方正少儿_GBK|Gen Jyuu Gothic XP
-方正晶准黑|PingFang HK
+方正晶准黑|PingFangHK-Regular
 方正琥珀_GBK|Heiti TC
 方正粗圆_GBK|DFPChuW4-B5
 方正粗圆简体|DFPChuW4-B5
-方正综艺简体|PingFang HK
-楷体|PingFang HK
-汉仪太极(哆啦)|PingFang HK
+方正综艺简体|PingFangHK-Regular
+楷体|PingFangHK-Regular
+汉仪太极(哆啦)|PingFangHK-Regular
 汉仪超粗圆简|Gen Jyuu Gothic XP
 长城特粗圆体|Gen Jyuu Gothic XP
