@@ -79,6 +79,7 @@ echo $title
 # | tr -dc '[:print:]'| sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | sed $SEDOPTION_L 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
 
+echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n" && echo -e "\n"
 read -p 'a'
 read -p 'b'
 
