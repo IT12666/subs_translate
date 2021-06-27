@@ -76,7 +76,8 @@ echo "translated text"
 
 title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | head -n -2)
 echo "$title" > $dirsub/LATEST/tmp.txt
-cat file | grep pattern | paste -sd'~' | sed -e 's/~/" "/g'
+cat -v $dirsub/LATEST/tmp.txt
+#| grep pattern | paste -sd'~' | sed -e 's/~/" "/g'
 title=$(cat $dirsub/LATEST/tmp.txt)
 #rm -f $dirsub/LATEST/tmp.txt
 echo "title grabbed ($title)"
@@ -133,6 +134,6 @@ echo "https://odysee.com/$/upload"
 fi
 done | tee $currdir/_ESSENTIAL/log.txt
 echo -e "\n"
-read -t 90 -n 1 -s -r -p 'done'
+read -t 10 -n 1 -s -r -p 'done'
 exit 0
 
