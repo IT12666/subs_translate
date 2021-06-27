@@ -81,14 +81,6 @@ title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | aw
 echo "title grabbed ($title)"
 
 
-
-read -p '213125'
-
-read -p 'b'
-
-read -p 'qgvdaegw'
-
-
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
 echo "translate text fixed"
 
