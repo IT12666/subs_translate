@@ -1,5 +1,4 @@
 #!/bin/bash
-echo 2465
 
 #SYSTEM PRESET
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-ri"; fi
@@ -45,12 +44,25 @@ echo "dir setup complete"
 
 
 #for f in `find $dirsub/LATEST`; do mv -v "$f" "`echo $f | tr '[A-Z]' '[a-z]'`" ; done 2>/dev/null
-for f in `find $dirsub/LATEST`; do echo $f; done 2>/dev/null
+for f in `ls $dirsub/LATEST`; do echo $f; done 2>/dev/null
 
 
 read -p 'a'
 read -p 'b'
 read -p 'c'
+
+
+
+
+
+
+
+
+
+
+
+
+
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
 mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
