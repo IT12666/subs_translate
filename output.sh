@@ -69,7 +69,6 @@ echo "changed Aegisub dir"
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Style.txt"
 echo "style transformed"
-read
 
 opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
 echo "translated text"
