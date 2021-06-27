@@ -75,7 +75,7 @@ echo "translated text"
 
 
 title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | sort | uniq | tr -dc '[[:print:]]')
-title=$(cat <<title | xargs | sed 's/ /,/g')
+title=$(cat <<title)
 # | sed $SEDOPTION_L 's/ //g' | sed $SEDOPTION_L 's/|/ + /g' | sed $SEDOPTION_L 's/櫻桃小丸子 + //g' | cut -f1-2 -d"+")
 echo "title grabbed ($title)"
 
