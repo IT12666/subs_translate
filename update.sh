@@ -34,12 +34,17 @@ setup=$currdir/_ESSENTIAL/Setup.txt
 for epname in $(grep -F "." $setup | cut -d '.' -f1 | sort | uniq ); do mkdir -p $currdir"/"$epname"/LATEST" && mkdir $currdir"/"$epname"/"$(grep -F $epname".nextep=" $setup | cut -d "=" -f2); done
 echo episode dirertory created
 
+find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
+rm -f $0
+echo "setup complete, Please run output.sh"
+
 else
 download 'scripts' 2>/dev/null
 echo fetched from server
 scriptup 2>/dev/null
 
 fi
+
 find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
 rm -f $0
 exec $currdir/output.sh
