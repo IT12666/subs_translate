@@ -1,13 +1,13 @@
-@FZCuYuan-M03|Gen Jyuu Gothic XP
+@FZCuYuan-M03|GenJyuuGothicX-P-Bold
 @FZZH-KLHTTJW|DFPChuW4-B5
 Alibaba PuHuiTi|PingFang HK
 Alibaba PuHuiTi Medium|PingFang HK
 DFFangYuanW7-GB|DFFangYuanW7-GB
-EPSON 太丸ゴシック体Ｂ|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
+EPSON 太丸ゴシック体Ｂ|umeboshi
 FZXiYuan-M01S|PingFang HK
 微软雅黑|PingFang HK
-方正少儿_GBK|Gen Jyuu Gothic XP
-方正粗圆_GBK|Gen Jyuu Gothic XP
+方正少儿_GBK|GenJyuuGothicX-P-Bold
+方正粗圆_GBK|GenJyuuGothicX-P-Bold
 方正黄草简体|PingFang HK
 楷体|PingFang HK
-阿里巴巴普惠体|Gen Jyuu Gothic XP
+阿里巴巴普惠体|GenJyuuGothicX-P-Bold
