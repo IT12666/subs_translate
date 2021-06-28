@@ -1,5 +1,5 @@
 #!/bin/bash
-
+echo weigno232
 #SYSTEM PRESET
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-ri"; fi
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION_L=""; else SEDOPTION_L=""; fi
