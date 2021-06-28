@@ -108,7 +108,7 @@ echo "https://odysee.com/$/upload"
 
 #back to loop
 fi
-done | tee "$currdir/_ESSENTIAL/log"$(date +'%m-%d-%Y-%T')".txt"
+done | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
 echo -e "\n"
 read -t 10 -n 1 -s -r -p 'done'
 exit 0
