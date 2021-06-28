@@ -42,12 +42,9 @@ rm -f $dirsub/LATEST/Translated.ass
 rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"
 
-ls $dirsub/LATEST/*的副本
-
-for f in $(ls $dirsub/LATEST/*的副本); do echo mv "$f" "${f//的副本/}"; done 2>/dev/null
 for f in $dirsub/LATEST/*\ *; do echo mv "$f" "${f// /}"; done 2>/dev/null
+for f in $(ls $dirsub/LATEST/*的副本); do echo mv "$f" "${f//的副本/}"; done 2>/dev/null
 for f in $(find $dirsub/LATEST -type f); do echo mv -v "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
-
 
 
 read -p 'a'
