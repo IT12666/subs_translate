@@ -101,7 +101,7 @@ echo $(grep -F $epname".title=" $setup | cut -d "=" -f2)"$title 日語繁中"
 echo -e "\n"
 echo -e $(grep -F $epname".desc=" $setup | cut -d "=" -f2)"【版權聲明】\n本視頻僅提供予(1)學習日語的人士 (2)失聰或聽覺有問題的人或身體上或精神上有其他方面殘障的人\n爲確保影片版權符合公平使用原則，(1)爲免影響該作品的潛在市場價值或價值（如電視台購買特輯），本頻道只會連載最多10期影片 (2)本頻道並不會開啓任何盈利功能，若有廣告產生，則爲版權持有人開啓\n若版權持有人對本影片有任何申訴，請傳送電郵至binary.in.love.520@gmail.com，本影片會立刻下架。"
 echo -e "\n"
-echo $(grep -F $epname".pic=" $setup | cut -d "=" -f2)
+echo $cover
 echo -e "\n"
 echo $(grep -F $epname".search=" $setup | cut -d "=" -f2)
 echo -e "\n"
