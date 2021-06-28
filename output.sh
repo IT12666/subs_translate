@@ -1,5 +1,5 @@
 #!/bin/bash
-echo weigno232
+echo weigno23223f
 #SYSTEM PRESET
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION="-i ''"; else SEDOPTION="-ri"; fi
 if [[ "$OSTYPE" == "darwin"* ]]; then SEDOPTION_L=""; else SEDOPTION_L=""; fi
@@ -41,6 +41,8 @@ setup=$(dirname $dirsub)"/_ESSENTIAL/Setup.txt"
 rm -f $dirsub/LATEST/Translated.ass 
 rm -f $dirsub/LATEST/Final.mp4
 echo "dir setup complete"
+
+ls $dirsub/LATEST/*的副本
 
 for f in $(ls $dirsub/LATEST/*的副本); do echo mv "$f" "${f//的副本/}"; done 2>/dev/null
 for f in $dirsub/LATEST/*\ *; do echo mv "$f" "${f// /}"; done 2>/dev/null
