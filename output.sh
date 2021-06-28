@@ -79,12 +79,6 @@ title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | aw
 echo "title grabbed ($title)"
 
 
-read -p 'a'
-read -p 'b'
-read -p 'c'
-read -p 'd'
-
-
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
 echo "translate text fixed"
 
@@ -100,7 +94,6 @@ title=$(echo $dirsub | grep -o '[^/]*$')"【"$title"】"
 echo "title complete"
 
 
-
 echo -e "\n"
 echo $(grep -F $epname".title=" $setup | cut -d "=" -f2)"$title 日語繁中"
 echo -e "\n"
@@ -110,6 +103,7 @@ echo $(grep -F $epname".pic=" $setup | cut -d "=" -f2)
 echo -e "\n"
 echo $(grep -F $epname".search=" $setup | cut -d "=" -f2)
 echo -e "\n"
+echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
 #back to loop
