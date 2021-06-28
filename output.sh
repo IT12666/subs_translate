@@ -59,7 +59,7 @@ if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATE
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
 echo "translated font"
 
-cover=echo $(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg)
+cover=$(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg)
 echo "uploaded cover"
 
 filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION_L 's/Video File: //g')
