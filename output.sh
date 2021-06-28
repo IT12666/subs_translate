@@ -25,9 +25,6 @@ dep_check 'ffmpeg' 'brew install ffmpeg'
 if ! command -v $1 > /dev/null; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
 echo "dependency checked"
 
-read -p "$(date +'%m-%d-%Y-%T')"
-
-rm -f $currdir/_ESSENTIAL/log.txt
 for dirsub in $(echo $currdir/*/) ; do
 if [ -d $dirsub"/LATEST" ] 
 then
@@ -117,7 +114,7 @@ echo "https://odysee.com/$/upload"
 
 #back to loop
 fi
-done | tee $currdir/_ESSENTIAL/log.txt
+done | tee "$currdir/_ESSENTIAL/log"$(date +'%m-%d-%Y-%T')".txt"
 echo -e "\n"
 read -t 10 -n 1 -s -r -p 'done'
 exit 0
