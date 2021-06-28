@@ -44,7 +44,7 @@ echo "dir setup complete"
 
 for f in $dirsub/LATEST/*\ *; do mv "$f" "${f// /}"; done 2>/dev/null
 for f in $(ls $dirsub/LATEST/*的副本); do mv "$f" "${f//的副本/}"; done 2>/dev/null
-for f in $(find $dirsub/LATEST -type f); do mv "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
+for f in $(find $dirsub/LATEST -type f); do mv "$f" "$(echo $f | tr '[A-Z]' '[a-z]')"; done
 
 
 read -p 'a'
