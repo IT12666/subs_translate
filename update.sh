@@ -32,7 +32,8 @@ scriptup 2>/dev/null
 
 setup=$currdir/_ESSENTIAL/Setup.txt
 for epname in $(grep -F "." $setup | cut -d '.' -f1 | sort | uniq | grep -v 'Sys'); do mkdir -p $currdir"/"$epname"/LATEST" && mkdir $currdir"/"$epname"/"$(grep -F $epname".nextep=" $setup | cut -d "=" -f2); done
-echo episode dirertory created
+mkdir $currdir/_ESSENTIAL/log
+echo episode and log dirertory created
 
 find $currdir -type f -iname "*.sh" -exec chmod u+x {} \;
 rm -f $0
