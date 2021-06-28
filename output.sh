@@ -25,7 +25,7 @@ dep_check 'ffmpeg' 'brew install ffmpeg'
 if ! command -v $1 > /dev/null; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
 echo "dependency checked"
 
-read -p "$(date +'%m-%d-%Y-%r')"
+read -p "$(date +'%m-%d-%Y-%T')"
 
 rm -f $currdir/_ESSENTIAL/log.txt
 for dirsub in $(echo $currdir/*/) ; do
