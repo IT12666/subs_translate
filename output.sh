@@ -44,7 +44,7 @@ echo "dir setup complete"
 
 for f in $dirsub/LATEST/*\ *; do mv "$f" "${f// /}"; done 2>/dev/null
 for f in $dirsub/LATEST/*的副本; do mv "$f" "${f//的副本/}"; done 2>/dev/null
-for f in $dirsub/LATEST/*; do mv "$dirsub/LATEST/$(basename $f)" "$dirsub/LATEST/$(echo $(basename $f) | tr '[A-Z]' '[a-z]')"; done
+for f in $dirsub/LATEST/*; do mv "$dirsub/LATEST/$(basename $f)" "$dirsub/LATEST/$(echo $(basename $f) | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
 mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
