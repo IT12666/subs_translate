@@ -61,6 +61,7 @@ while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=
 echo "translated font"
 
 cover=$(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg)
+: "${cover:= $(grep -F $cover".search=" $setup | cut -d "=" -f2)}"
 echo "uploaded cover"
 
 filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION_L 's/Video File: //g')
