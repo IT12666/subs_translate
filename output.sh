@@ -110,8 +110,8 @@ echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
 #back to loop
-fi
-done | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
+fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
+done
 echo -e "\n"
 read -t 10 -n 1 -s -r -p 'done'
 exit 0
