@@ -11,3 +11,6 @@ FZXiYuan-M01S|PingFangHK-Regular
 方正黄草简体|PingFangHK-Regular
 楷体|PingFangHK-Regular
 阿里巴巴普惠体|Gen Jyuu Gothic XP
+樱桃小丸子-提供左右字幕（換行）,|樱桃小丸子-提供左右字幕（換行）,@
+pmz - feiju - 黑,|pmz - feiju - 黑,@
+pmz - feiju - 白,|pmz - feiju - 白,@
