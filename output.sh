@@ -36,8 +36,8 @@ echo "Now Processing --- $epname"
 
 
 setup=$(dirname $dirsub)"/_ESSENTIAL/Setup.txt"
-rm -f $dirsub/LATEST/Translated.ass 
-rm -f $dirsub/LATEST/Final.mp4
+rm -f $dirsub/LATEST/Translated.*
+rm -f $dirsub/LATEST/Final.*
 echo "dir setup complete"
 
 for f in $dirsub/LATEST/*\ *; do mv "$f" "${f// /}"; done 2>/dev/null
