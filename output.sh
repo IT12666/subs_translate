@@ -118,8 +118,7 @@ echo "https://odysee.com/$/upload"
 curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/exarchist/LBRY/master/publish-file.py
 echo "downloaded script"
 
-filech=GFilePath = ""
-sed $SEDOPTION "s!GFilePath = \"\"!Source.mp4!"  $dirsub/LATEST/Translated.ass
+sed $SEDOPTION 's!GFilePath = ""!'"Source.mp4!"  $dirsub/LATEST/Translated.ass
 
 echo "updated script"
 
