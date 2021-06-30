@@ -118,7 +118,7 @@ echo "https://odysee.com/$/upload"
 curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/exarchist/LBRY/master/publish-file.py
 echo "downloaded script"
 
-sed $SEDOPTION "14s/.*/replacement-line/"  $dirsub/Translated.ass
+sed -i "14s/.*/replacement-line/"  $dirsub/Translated.ass
 
 echo "updated script"
 
