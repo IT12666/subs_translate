@@ -123,7 +123,7 @@ echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | 
 read -p 'a'
 
 echo "uploading to odysee"
-python3 $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv --config=$currdir/_ESSENTIAL/lbry_uploader/config/default.ini
+sudo python3 $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv --config=$currdir/_ESSENTIAL/lbry_uploader/config/default.ini
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
