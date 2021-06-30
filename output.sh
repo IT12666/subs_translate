@@ -22,7 +22,7 @@ sed $SEDOPTION '/Sys.updated/d' $setup
 
 dep_check 'opencc' 'brew install opencc'
 dep_check 'ffmpeg' 'brew install ffmpeg'
-if ! command -v $1 > /dev/null; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
+#if ! command -v $1 > /dev/null; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
 echo "dependency checked"
 
 for dirsub in $(echo $currdir/*/) ; do
@@ -42,12 +42,12 @@ for f in $dirsub/LATEST/*的副本; do mv "$f" "${f//的副本/}"; done 2>/dev/n
 for f in $dirsub/LATEST/*; do mv "$dirsub/LATEST/$(basename $f)" "$dirsub/LATEST/$(echo $(basename $f) | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
 
 rm -f $dirsub/LATEST/translated.ass
-rm -f $dirsub/LATEST/final.mp4
+#rm -f $dirsub/LATEST/final.mp4
 
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
 mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
-mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
+#mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
 mv $dirsub/LATEST/*.jpeg $dirsub/LATEST/Cover.jpg 2>/dev/null
 mv $dirsub/LATEST/*.jpg $dirsub/LATEST/Cover.jpg 2>/dev/null
 cp $dirsub/LATEST/Source.ass $dirsub/LATEST/Translated.ass 2>/dev/null
@@ -90,7 +90,7 @@ echo "translate text fixed"
 if [ ! -f $dirsub/LATEST/test.txt ]; then mv $dirsub/LATEST/ "$dirsub/"$((1+$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}'))) && mkdir $dirsub/LATEST && dirsub=$dirsub/$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}') && echo "Moved dir to "$(echo $dirsub | grep -o '[^/]*$'); else echo 'Test Mode - NOT moving any files' && dirsub=$dirsub/LATEST; fi
 
 echo "making production"
-ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass:fontsdir="$currdir/_ESSENTIAL/TRAD_FONT/" $dirsub/Final.mp4 -y
+#ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass:fontsdir="$currdir/_ESSENTIAL/TRAD_FONT/" $dirsub/Final.mp4 -y
 echo "output complete"
 
 
@@ -109,6 +109,17 @@ echo $(grep -F $epname".search=" $setup | cut -d "=" -f2)
 echo -e "\n"
 echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
+
+
+
+cat > $dirsub/input.csv
+
+
+read -p 'a'
+
+echo "uploading to odysee"
+python $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv
+#--config=myconfig
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
