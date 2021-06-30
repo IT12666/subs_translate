@@ -115,22 +115,15 @@ echo -e "\n"
 echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
-ls $dirsub
-
 touch $dirsub/input.csv
 echo 'title,name,file_path,description,channel_name,claim_address,thumbnail' >> $dirsub/input.csv
 echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
 
 
-cat $dirsub/input.csv
-echo aaa
-cat $currdir/_ESSENTIAL/lbry_uploader/config/default.ini
-
-
 read -p 'a'
 
 echo "uploading to odysee"
-python $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv --config=$currdir/_ESSENTIAL/lbry_uploader/config/default.ini
+python3 $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv --config=$currdir/_ESSENTIAL/lbry_uploader/config/default.ini
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
