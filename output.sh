@@ -94,13 +94,13 @@ echo "making production"
 #ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass:fontsdir="$currdir/_ESSENTIAL/TRAD_FONT/" $dirsub/Final.mp4 -y
 echo "output complete"
 
-
-title=$(echo $dirsub | grep -o '[^/]*$')"【"$title"】"
+epno=$(echo $dirsub | grep -o '[^/]*$')
+title=$(grep -F $epname".title=" $setup | cut -d "=" -f2)$epno"【"$title"】日語繁中"
 echo "title complete"
 
 
 echo -e "\n"
-echo $(grep -F $epname".title=" $setup | cut -d "=" -f2)"$title 日語繁中"
+echo $title
 echo -e "\n"
 echo -e $(grep -F $epname".desc=" $setup | cut -d "=" -f2)"【版權聲明】\n本視頻僅提供予(1)學習日語的人士 (2)失聰或聽覺有問題的人或身體上或精神上有其他方面殘障的人\n爲確保影片版權符合公平使用原則，(1)爲免影響該作品的潛在市場價值或價值（如電視台購買特輯），本頻道只會連載最多10期影片 (2)本頻道並不會開啓任何盈利功能，若有廣告產生，則爲版權持有人開啓\n若版權持有人對本影片有任何申訴，請傳送電郵至binary.in.love.520@gmail.com，本影片會立刻下架。"
 echo -e "\n"
@@ -114,16 +114,25 @@ echo "https://odysee.com/$/upload"
 
 
 touch $dirsub/input.csv
-echo "hello world" >> $dirsub/input.csv
-echo "hello wasgasd" >> $dirsub/input.csv
+echo 'title,name,file_path,bid,fee_amount,fee_currency,description,thumbnail,preview' >> $dirsub/input.csv
+
+$title,
+$epno,
+file_path,
+bid,
+description,
+channel_name,
+thumbnail,
+
+
+
 cat $dirsub/input.csv
 
 
 read -p 'a'
 
 echo "uploading to odysee"
-python $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv
-#--config=myconfig
+python $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv --config=$currdir/_ESSENTIAL/lbry_uploader/config
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
