@@ -30,13 +30,12 @@ if [ -d $dirsub"/LATEST" ]
 then
 #loop start
 
-dirsub=$(readlink -m $dirsub)
-echo "fixed URL"
-
 echo -e "\n"
 epname=$(basename "$dirsub")
 echo "Now Processing --- $epname"
 
+dirsub=$(readlink -m $dirsub)
+echo "fixed URL"
 
 setup=$(dirname $dirsub)"/_ESSENTIAL/Setup.txt"
 
