@@ -115,7 +115,7 @@ echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
 echo "uploading to odysee"
-sudo python3 $currdir/_ESSENTIAL/lbry/upload.py -p "$dirsub/Final.mp4" -c "@Doraemon#32"
+python $currdir/_ESSENTIAL/lbry/upload.py -p "$dirsub/Final.mp4" -c "@Doraemon#32"
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
