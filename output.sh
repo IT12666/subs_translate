@@ -113,8 +113,8 @@ echo "https://odysee.com/$/upload"
 
 
 touch $dirsub/input.csv
-echo "hello world" > $dirsub/input.csv
-echo "hello wasgasd" > $dirsub/input.csv
+echo "hello world" >> $dirsub/input.csv
+echo "hello wasgasd" >> $dirsub/input.csv
 cat $dirsub/input.csv
 
 
