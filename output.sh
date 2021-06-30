@@ -111,7 +111,7 @@ echo -e "\n"
 echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
-ls
+ls $dirsub
 
 touch $dirsub/input.csv
 echo 'title,name,file_path,bid,fee_amount,fee_currency,description,thumbnail,preview' >> $dirsub/input.csv
