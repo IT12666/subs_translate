@@ -113,8 +113,8 @@ echo "https://odysee.com/$/upload"
 
 
 cat > $dirsub/input.csv
-echo "hello world" >> $dirsub/input.csv
-echo "hello wasgasd" >> $dirsub/input.csv
+echo "hello world" > $dirsub/input.csv
+echo "hello wasgasd" > $dirsub/input.csv
 cat $dirsub/input.csv
 
 
@@ -128,6 +128,6 @@ python $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
 done
 echo -e "\n"
-read -t 4 -n 1 -s -r -p 'done'
+read -t 4 -n 1 -p 'done'
 exit 0
 
