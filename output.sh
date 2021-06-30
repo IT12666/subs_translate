@@ -30,6 +30,9 @@ if [ -d $dirsub"/LATEST" ]
 then
 #loop start
 
+dirsub=$(readlink -m $dirsub)
+echo "fixed URL"
+
 echo -e "\n"
 epname=$(basename "$dirsub")
 echo "Now Processing --- $epname"
@@ -91,8 +94,6 @@ echo "translate text fixed"
 if [ ! -f $dirsub/LATEST/test.txt ]; then mv $dirsub/LATEST/ "$dirsub/"$((1+$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}'))) && mkdir $dirsub/LATEST && dirsub=$dirsub/$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}') && echo "Moved dir to "$(echo $dirsub | grep -o '[^/]*$'); else echo 'Test Mode - NOT moving any files' && dirsub=$dirsub/LATEST; fi
 
 echo "making production"
-outputvid=$dirsub'Final.mp4'
-read -p "$outputvid"
 #ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass:fontsdir="$currdir/_ESSENTIAL/TRAD_FONT/" $dirsub/Final.mp4 -y
 echo "output complete"
 
