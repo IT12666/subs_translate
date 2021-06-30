@@ -115,6 +115,7 @@ echo "https://odysee.com/$/upload"
 cat > $dirsub/input.csv
 echo "hello world" >> $dirsub/input.csv
 echo "hello wasgasd" >> $dirsub/input.csv
+cat $dirsub/input.csv
 
 
 read -p 'a'
