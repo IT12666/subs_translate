@@ -122,8 +122,9 @@ echo 'title,name,file_path,description,channel_name,claim_address,thumbnail' >> 
 echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
 
 
-
-cat $dirsub/input.csv
+cat $$dirsub/input.csv
+echo aaa
+cat $currdir/_ESSENTIAL/lbry_uploader/config/default.ini
 
 
 read -p 'a'
