@@ -43,6 +43,7 @@ for f in $dirsub/LATEST/*; do mv "$dirsub/LATEST/$(basename $f)" "$dirsub/LATEST
 
 rm -f $dirsub/LATEST/translated.ass
 #rm -f $dirsub/LATEST/final.mp4
+rm -f $dirsub/LATEST/input.csv
 
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
