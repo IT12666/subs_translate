@@ -63,8 +63,8 @@ if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATE
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
 echo "translated font"
 
-if [ ! -f $dirsub/LATEST/Cover.jpg ] ; then echo "No Cover found, Downloading..." && curl -s -L -o $dirsub/LATEST/Cover.jpg $(grep -F $epname".cover=" $setup | cut -d "=" -f2) ; fi
-cover=$(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg 2>/dev/null)
+if [ ! -f $dirsub/LATEST/Cover.jpg ] ; then echo "No Cover found, Downloading..." && curl -s -L -o $dirsub/LATEST/Cover.jpg $(grep -F $epname".cover=" $setup | cut -d "=" -f2) ; else cover=$(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg 2>/dev/null) ; fi
+: "${cover:= $(grep -F $epname".cover=" $setup | cut -d "=" -f2)}"
 echo "uploaded cover"
 
 filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION_L 's/Video File: //g')
@@ -114,16 +114,19 @@ echo -e "\n"
 echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
-echo "uploading to odysee"
-touch $dirsub/odysee.description
-touch $dirsub/odysee.tags
-$desc >> $dirsub/odysee.description
-$(grep -F $epname".search=" $setup | cut -d "=" -f2 | tr , '\n') >> $dirsub/odysee.tags
-echo "Created necessary files"
 
+curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/exarchist/LBRY/master/publish-file.py
+echo "downloaded script"
 
-python $currdir/_ESSENTIAL/lbry/upload.py -p "$dirsub" -c "@Doraemon#32" -f "Final.mp4"
+filech=GFilePath = ""
+sed $SEDOPTION "s!GFilePath = \"\"!Source.mp4!"  $dirsub/LATEST/Translated.ass
+
+echo "updated script"
+
 read -p 'wait'
+python $dirsub/odysee.py -p "$dirsub" -c "@Doraemon#32" -f "Final.mp4"
+
+
 rm -rf $dirsub/odysee.*
 
 #back to loop
