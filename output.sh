@@ -46,7 +46,6 @@ for f in $dirsub/LATEST/*; do mv "$dirsub/LATEST/$(basename $f)" "$dirsub/LATEST
 
 rm -f $dirsub/LATEST/translated.ass
 #rm -f $dirsub/LATEST/final.mp4
-rm -f $dirsub/LATEST/input.csv
 
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
@@ -115,15 +114,8 @@ echo -e "\n"
 echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
-touch $dirsub/input.csv
-echo 'title,name,file_path,description,channel_name,claim_address,thumbnail' >> $dirsub/input.csv
-echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
-
-
-read -p 'a'
-
 echo "uploading to odysee"
-sudo python3 $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv --config=$currdir/_ESSENTIAL/lbry_uploader/config/default.ini
+sudo python3 $currdir/_ESSENTIAL/lbry/upload.py 
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
