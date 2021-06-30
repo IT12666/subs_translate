@@ -128,6 +128,6 @@ python $currdir/_ESSENTIAL/lbry_uploader/upload.py --input=$dirsub/input.csv
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
 done
 echo -e "\n"
-read -t 10 -n 1 -s -r -p 'done'
+read -t 4 -n 1 -s -r -p 'done'
 exit 0
 
