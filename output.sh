@@ -117,7 +117,12 @@ echo "https://odysee.com/$/upload"
 curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/exarchist/LBRY/master/publish-file.py
 echo "downloaded script"
 
-echo sed -i "14s/.*/replacement-line/"  $dirsub/Translated.ass
+echo sed -i "14s/.*/replacement-line/"  $dirsub/odysee.py
+echo sed -i "17s/.*/replacement-line/"  $dirsub/odysee.py
+echo sed -i "18s/.*/replacement-line/"  $dirsub/odysee.py
+echo sed -i "20s/.*/replacement-line/"  $dirsub/odysee.py
+echo sed -i "23s/.*/replacement-line/"  $dirsub/odysee.py
+echo sed -i "26s/.*/replacement-line/"  $dirsub/odysee.py
 
 echo "updated script"
 
