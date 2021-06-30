@@ -115,7 +115,16 @@ echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
 echo "uploading to odysee"
+touch $dirsub/odysee.description
+touch $dirsub/odysee.tags
+$desc >> $dirsub/odysee.description
+$(grep -F $epname".search=" $setup | cut -d "=" -f2 | tr , '\n') >> $dirsub/odysee.tags
+echo "Created necessary files"
+
+
 python $currdir/_ESSENTIAL/lbry/upload.py -p "$dirsub" -c "@Doraemon#32" -f "Final.mp4"
+read -p 'wait'
+rm -rf $dirsub/odysee.*
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
