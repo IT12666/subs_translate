@@ -116,7 +116,7 @@ ls $dirsub
 
 touch $dirsub/input.csv
 echo 'title,name,file_path,description,channel_name,claim_address,thumbnail' >> $dirsub/input.csv
-echo "$title,$epno,$dirsub'/Final.mp4',$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
+echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
 
 
 
