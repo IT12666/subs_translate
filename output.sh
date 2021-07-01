@@ -117,14 +117,19 @@ echo "downloading script"
 curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/latest/download/lbrynet-linux.zip
 unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/" 
 mv $dirsub/lbrynet $dirsub/odysee
-curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/pen954/lbry_mass_upload_py/main/script.py
 echo "downloaded script"
 
 chmod u+x $dirsub/odysee
 startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 &>/dev/null; }
-publishlbry() { python $dirsub/odysee.py -i $1 -n $2 -t $3 -e $4 ; }
-startlbry & sleep 10 && echo "start" && publishlbry $(grep -F $epname".chname=" $setup | cut -d "=" -f2) $(grep -F $epname".chaddr=" $setup | cut -d "=" -f2) $(grep -F $epname".search=" $setup | cut -d "=" -f2)
+
+publishlbry() { $dirsub/odysee publish test --bid=$1 --file_path=$2  ; }
+ # --file_name=$3 --fee_address=$4 --title=$5 --description=$6 --tags=$7 --thumbnail_url=$8 --channel_id=$9 --channel_name=$10 --channel_account_id=$11 --account_id=$12 --wallet_id=$13 --claim_address=$14 ; }
+ startlbry & sleep 10 && echo "start" && publishlbry 0.01 "$dirsub" 
+ #"Final.mp4" "$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" "$title"
+
+
 read -p 'wait'
+
 
 
 rm -rf $dirsub/odysee.*
