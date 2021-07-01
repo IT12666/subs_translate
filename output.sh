@@ -126,7 +126,7 @@ addtxt="GPublishTitle = \"$title\"" && sed -i "32s/.*/$addtxt/"  $dirsub/odysee.
 addtxt="GChannelID = \"$(grep -F $epname".chname=" $setup | cut -d "=" -f2)\"" && sed -i "35s/.*/$addtxt/"  $dirsub/odysee.py
 addtxt="GChannelName = \"$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2)\"" && sed -i "38s/.*/$addtxt/"  $dirsub/odysee.py
 #addtxt="GDescriptionFile = \"\"" && sed -i "41s/.*/$addtxt/"  $dirsub/odysee.py
-addtxt="GDescription = \"$desc\"" && sed -i "44s!.*!$addtxt!"  $dirsub/odysee.py
+#addtxt="GDescription = \"$desc\"" && sed -i "44s!.*!$addtxt!"  $dirsub/odysee.py
 #addtxt="GTagFile = \"\"" && sed -i "47s/.*/$addtxt/"  $dirsub/odysee.py
 addtxt="GTags = \[$(grep -F $epname".search=" $setup | cut -d "=" -f2 | sed $SEDOPTION_L 's/,/","/g' )\]" && sed -i "50s/.*/$addtxt/"  $dirsub/odysee.py
 
