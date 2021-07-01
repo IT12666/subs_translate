@@ -120,7 +120,7 @@ mv $dirsub/lbrynet $dirsub/odysee
 echo "downloaded script"
 
 chmod u+x $dirsub/odysee
-$dirsub/odysee publish --name=test --bid="0.01" --file_path="$dirsub" --filename="Final.mp4" --fee_address="$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" --title="$title"
+$dirsub/odysee publish "test" --bid="0.01" --file_path="$dirsub" --filename="Final.mp4" --fee_address="$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" --title="$title"
 
 read -p 'wait'
 
