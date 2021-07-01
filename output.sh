@@ -121,7 +121,7 @@ addtxt="GFilePath = \"$dirsub\"" && sed -i "14s!.*!$addtxt!"  $dirsub/odysee.py
 addtxt="GUploadFileExtension = \"mp4\"" && sed -i "17s/.*/$addtxt/"  $dirsub/odysee.py
 addtxt="GUploadFileName = \"Final\"" && sed -i "20s/.*/$addtxt/"  $dirsub/odysee.py
 addtxt="GThumbnailFileURL = \"$cover\"" && sed -i "26s!.*!$addtxt!"  $dirsub/odysee.py
-#addtxt="GPublishURL = \"\"" && sed -i "29s/.*/$addtxt/"  $dirsub/odysee.py
+addtxt="GPublishURL = \"odysee.com/$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2)/test\"" && sed -i "29s!.*!$addtxt!"  $dirsub/odysee.py
 addtxt="GPublishTitle = \"$title\"" && sed -i "32s/.*/$addtxt/"  $dirsub/odysee.py
 addtxt="GChannelID = \"$(grep -F $epname".chname=" $setup | cut -d "=" -f2)\"" && sed -i "35s/.*/$addtxt/"  $dirsub/odysee.py
 addtxt="GChannelName = \"$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2)\"" && sed -i "38s/.*/$addtxt/"  $dirsub/odysee.py
