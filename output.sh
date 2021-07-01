@@ -125,7 +125,7 @@ startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=
 touch $dirsub/input.csv
 echo 'title,name,file_path,description,channel_name,claim_address,thumbnail' >> $dirsub/input.csv
 echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
-publishlbry() { sudo python3 $currdir/_ESSENTIAL/lbry/upload.py --input=$dirsub/input.csv }
+publishlbry() { sudo python3 $currdir/_ESSENTIAL/lbry/upload.py --input=$dirsub/input.csv ; }
 #--config=$currdir/_ESSENTIAL/lbry_uploader/config/default.ini ; }
  startlbry & sleep 10 && echo "start" && publishlbry
  #$(grep -F $epname".chname=" $setup | cut -d "=" -f2) "" 
