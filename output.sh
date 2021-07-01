@@ -122,9 +122,9 @@ echo "downloaded script"
 chmod u+x $dirsub/odysee
 startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 &>/dev/null; }
 
-publishlbry() { $dirsub/odysee publish test --bid=$1 --file_path=$2 --file_name=$3 --title=$5 ; }
- #   --description=$6 --tags=$7 --thumbnail_url=$8 --channel_id=$9 --channel_name=$10 --channel_account_id=$11 --account_id=$12 --wallet_id=$13 --claim_address=$14 ; }
- startlbry & sleep 10 && echo "start" && publishlbry 0.01 $dirsub/final.mp4 final.mp4 "$title"
+publishlbry() { $dirsub/odysee publish test --bid=$1 --file_path=$2 --file_name=$3 --channel_id=$4 --channel_name=$5 --wallet_id=$6; }
+ # --title=$5  --description=$6 --tags=$7 --thumbnail_url=$8  --channel_account_id=$11 --account_id=$12 --claim_address=$14 ; }
+ startlbry & sleep 10 && echo "start" && publishlbry 0.01 $dirsub/final.mp4 final.mp4 $(grep -F $epname".chname=" $setup | cut -d "=" -f2) $(grep -F $epname".chaddr=" $setup | cut -d "=" -f2) bPTNs2e1Wm9Rf2MCCUet41xNo8VghCdaYC
  #$(grep -F $epname".chname=" $setup | cut -d "=" -f2) "" 
  
  
