@@ -116,12 +116,11 @@ echo "https://odysee.com/$/upload"
 
 curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/latest/download/lbrynet-linux.zip
 unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/" 
-$dirsub/lbrynet start
+mv $dirsub/lbrynet $dirsub/odysee
 echo "downloaded script"
 
-
-!chmod u+x /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet
-!sudo /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet publish
+chmod u+x /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet
+sudo /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet publish
 
 read -p 'wait'
 
