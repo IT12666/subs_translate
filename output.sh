@@ -115,7 +115,7 @@ echo "https://odysee.com/$/upload"
 
 
 #curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/download/v0.100.0/lbrynet-linux.zip
-exec lbrynet
+exec $dirsub/lbrynet
 echo "downloaded script"
 
 
