@@ -119,8 +119,8 @@ unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/"
 mv $dirsub/lbrynet $dirsub/odysee
 echo "downloaded script"
 
-chmod u+x /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet
-sudo /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet publish
+chmod u+x $dirsub/odysee
+sudo $dirsub/odysee publish
 
 read -p 'wait'
 
