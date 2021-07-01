@@ -114,7 +114,7 @@ echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
 
-curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/download/latest/lbrynet-linux.zip
+curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/latest/download/lbrynet-linux.zip
 unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/" 
 $dirsub/lbrynet start
 echo "downloaded script"
