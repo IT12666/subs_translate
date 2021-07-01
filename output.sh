@@ -120,10 +120,10 @@ mv $dirsub/lbrynet $dirsub/odysee
 echo "downloaded script"
 
 chmod u+x $dirsub/odysee
-startlbry() { sudo $dirsub/odysee publish start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280; }
+startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280; }
+publishlbry() {$dirsub/odysee publish test --bid="0.01" --file_path="$dirsub" --filename="Final.mp4" --fee_address="$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" --title="$title" ; }
 
-startlbry & sleep 10 && echo "start" && $dirsub/odysee publish "test" --bid="0.01" --file_path="$dirsub" --filename="Final.mp4" --fee_address="$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" --title="$title"
-
+startlbry & sleep 10 && echo "start" && publishlbry
 read -p 'wait'
 
 
