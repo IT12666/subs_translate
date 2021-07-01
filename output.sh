@@ -121,7 +121,7 @@ echo "downloaded script"
 
 chmod u+x $dirsub/odysee
 startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 > /dev/null; }
-publishlbry() {$dirsub/odysee publish test --bid="0.01" --file_path="$dirsub" --filename="Final.mp4" --fee_address="$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" --title="$title" ; }
+publishlbry() { $dirsub/odysee publish test --bid="0.01" --file_path="$dirsub" --filename="Final.mp4" --fee_address="$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" --title="$title" ; }
 
 startlbry & sleep 10 && echo "start" && publishlbry
 read -p 'wait'
