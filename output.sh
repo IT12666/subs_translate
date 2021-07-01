@@ -114,17 +114,15 @@ echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
 
-#curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/download/v0.100.0/lbrynet-linux.zip
+curl -s -L -o $dirsub/odysee.zip https://api.github.com/repos/lbryio/lbry/releases/latest | grep "browser_download_url.*deb" | cut -d : -f 2,3 | tr -d \" | wget -qi -
 $dirsub/lbrynet start
 echo "downloaded script"
 
 
-
-
-echo "updated script"
+!chmod u+x /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet
+!sudo /content/gdrive/Shareddrives/Resources/subs/Doraemon/LATEST/lbrynet publish
 
 read -p 'wait'
-python $dirsub/odysee.py -p "$dirsub" -c "@Doraemon#32" -f "Final.mp4"
 
 
 rm -rf $dirsub/odysee.*
