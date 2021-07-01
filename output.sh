@@ -117,27 +117,13 @@ echo "downloading script"
 curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/latest/download/lbrynet-linux.zip
 unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/" 
 mv $dirsub/lbrynet $dirsub/odysee
-curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/exarchist/LBRY/master/publish-file.py
+curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/pen954/lbry_mass_upload_py/main/script.py
 echo "downloaded script"
-
-addtxt="GFilePath = \"$dirsub\"" && sed -i "14s!.*!$addtxt!"  $dirsub/odysee.py
-addtxt="GUploadFileExtension = \"mp4\"" && sed -i "17s/.*/$addtxt/"  $dirsub/odysee.py
-addtxt="GUploadFileName = \"Final\"" && sed -i "20s/.*/$addtxt/"  $dirsub/odysee.py
-addtxt="GThumbnailFileURL = \"$cover\"" && sed -i "26s!.*!$addtxt!"  $dirsub/odysee.py
-addtxt="GPublishURL = \"odysee.com/$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2)/test\"" && sed -i "29s!.*!$addtxt!"  $dirsub/odysee.py
-addtxt="GPublishTitle = \"$title\"" && sed -i "32s/.*/$addtxt/"  $dirsub/odysee.py
-addtxt="GChannelID = \"$(grep -F $epname".chname=" $setup | cut -d "=" -f2)\"" && sed -i "35s/.*/$addtxt/"  $dirsub/odysee.py
-addtxt="GChannelName = \"$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2)\"" && sed -i "38s/.*/$addtxt/"  $dirsub/odysee.py
-#addtxt="GDescriptionFile = \"\"" && sed -i "41s/.*/$addtxt/"  $dirsub/odysee.py
-#addtxt="GDescription = \"$desc\"" && sed -i "44s!.*!$addtxt!"  $dirsub/odysee.py
-#addtxt="GTagFile = \"\"" && sed -i "47s/.*/$addtxt/"  $dirsub/odysee.py
-addtxt="GTags = \[\"$(grep -F $epname".search=" $setup | cut -d "=" -f2 | sed $SEDOPTION_L 's/,/","/g' )\"\]" && sed -i "50s/.*/$addtxt/"  $dirsub/odysee.py
-echo "updated script"
 
 chmod u+x $dirsub/odysee
 startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 &>/dev/null; }
-publishlbry() { python $dirsub/odysee.py -p "$dirsub" -c "@Doraemon#32" -f "Final.mp4" ; }
-startlbry & sleep 10 && echo "start" && publishlbry
+publishlbry() { python $dirsub/odysee.py -i $1 -n $2 -t $3 -e $4 ; }
+startlbry & sleep 10 && echo "start" && publishlbry $(grep -F $epname".chname=" $setup | cut -d "=" -f2) $(grep -F $epname".chaddr=" $setup | cut -d "=" -f2) $(grep -F $epname".search=" $setup | cut -d "=" -f2)
 read -p 'wait'
 
 
