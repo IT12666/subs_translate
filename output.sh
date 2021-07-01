@@ -117,13 +117,27 @@ echo "downloading script"
 curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/latest/download/lbrynet-linux.zip
 unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/" 
 mv $dirsub/lbrynet $dirsub/odysee
+curl -s -L -o $dirsub/odysee.py https://raw.githubusercontent.com/exarchist/LBRY/master/publish-file.py
 echo "downloaded script"
+
+addtxt="GFilePath = \"$dirsub\"" && sed -i "14s!.*!$addtxt!"  $dirsub/odysee.py
+addtxt="GUploadFileExtension = \"mp4\"" && sed -i "17s/.*/$addtxt/"  $dirsub/odysee.py
+addtxt="GUploadFileName = \"Final\"" && sed -i "20s/.*/$addtxt/"  $dirsub/odysee.py
+addtxt="GThumbnailFileURL = \"$cover\"" && sed -i "26s!.*!$addtxt!"  $dirsub/odysee.py
+addtxt="GPublishURL = \"odysee.com/$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2)/test\"" && sed -i "29s!.*!$addtxt!"  $dirsub/odysee.py
+addtxt="GPublishTitle = \"$title\"" && sed -i "32s/.*/$addtxt/"  $dirsub/odysee.py
+addtxt="GChannelID = \"$(grep -F $epname".chname=" $setup | cut -d "=" -f2)\"" && sed -i "35s/.*/$addtxt/"  $dirsub/odysee.py
+addtxt="GChannelName = \"$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2)\"" && sed -i "38s/.*/$addtxt/"  $dirsub/odysee.py
+#addtxt="GDescriptionFile = \"\"" && sed -i "41s/.*/$addtxt/"  $dirsub/odysee.py
+#addtxt="GDescription = \"$desc\"" && sed -i "44s!.*!$addtxt!"  $dirsub/odysee.py
+#addtxt="GTagFile = \"\"" && sed -i "47s/.*/$addtxt/"  $dirsub/odysee.py
+addtxt="GTags = \[\"$(grep -F $epname".search=" $setup | cut -d "=" -f2 | sed $SEDOPTION_L 's/,/","/g' )\"\]" && sed -i "50s/.*/$addtxt/"  $dirsub/odysee.py
+echo "updated script"
 
 chmod u+x $dirsub/odysee
 startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 &>/dev/null; }
-publishlbry() { $dirsub/odysee publish test --bid=$1 --file_path=$2 --file_name=$3 --fee_address=$4 --title=$5 ; }
-# --description=$6 --tags=$7 --thumbnail_url=$8 --channel_id=$9 --channel_name=$10 --channel_account_id=$11 --account_id=$12 --wallet_id=$13 --claim_address=$14 ; }
-startlbry & sleep 10 && echo "start" && publishlbry 0.01 "$dirsub" "Final.mp4" "$(grep -F $epname".chname=" $setup | cut -d "=" -f2)" "$title"
+publishlbry() { python $dirsub/odysee.py -p "$dirsub" -c "@Doraemon#32" -f "Final.mp4" ; }
+startlbry & sleep 10 && echo "start" && publishlbry
 read -p 'wait'
 
 
