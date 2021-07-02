@@ -44,26 +44,25 @@ for f in $dirsub/LATEST/*的副本; do mv "$f" "${f//的副本/}"; done 2>/dev/n
 for f in $dirsub/LATEST/*; do mv "$dirsub/LATEST/$(basename $f)" "$dirsub/LATEST/$(echo $(basename $f) | tr '[A-Z]' '[a-z]')"; done 2>/dev/null
 
 rm -f $dirsub/LATEST/translated.ass
-#rm -f $dirsub/LATEST/final.mp4
-rm -f $dirsub/LATEST/input.csv
+rm -f $dirsub/LATEST/final.mp4
 
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
 mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
 mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
-#mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
+mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
 mv $dirsub/LATEST/*.jpeg $dirsub/LATEST/Cover.jpg 2>/dev/null
 mv $dirsub/LATEST/*.jpg $dirsub/LATEST/Cover.jpg 2>/dev/null
 cp $dirsub/LATEST/Source.ass $dirsub/LATEST/Translated.ass 2>/dev/null
 echo "files preparation completed"
 
 
-#if [ ! -f $dirsub/LATEST/Source.ass ] || [ ! -f $dirsub/LATEST/Source.mp4 ] ; then echo "Error: no file found" && continue; fi
+if [ ! -f $dirsub/LATEST/Source.ass ] || [ ! -f $dirsub/LATEST/Source.mp4 ] ; then echo "Error: no file found" && continue; fi
 if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATEST/Source.ass; then echo "dir checking complete"; else rm -f $dirsub/LATEST/Translated.ass && echo "Error: no keyword found" && continue; fi
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
 echo "translated font"
 
-#if [ ! -f $dirsub/LATEST/Cover.jpg ] ; then echo "No Cover found, Downloading..." && curl -s -L -o $dirsub/LATEST/Cover.jpg $(grep -F $epname".cover=" $setup | cut -d "=" -f2) ; else cover=$(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg 2>/dev/null) ; fi
+if [ ! -f $dirsub/LATEST/Cover.jpg ] ; then echo "No Cover found, Downloading..." && curl -s -L -o $dirsub/LATEST/Cover.jpg $(grep -F $epname".cover=" $setup | cut -d "=" -f2) ; else cover=$(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg 2>/dev/null) ; fi
 : "${cover:= $(grep -F $epname".cover=" $setup | cut -d "=" -f2)}"
 echo "uploaded cover"
 
@@ -93,7 +92,7 @@ echo "translate text fixed"
 if [ ! -f $dirsub/LATEST/test.txt ]; then mv $dirsub/LATEST/ "$dirsub/"$((1+$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}'))) && mkdir $dirsub/LATEST && dirsub=$dirsub/$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}') && echo "Moved dir to "$(echo $dirsub | grep -o '[^/]*$'); else echo 'Test Mode - NOT moving any files' && dirsub=$dirsub/LATEST; fi
 
 echo "making production"
-#ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass:fontsdir="$currdir/_ESSENTIAL/TRAD_FONT/" $dirsub/Final.mp4 -y
+ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass:fontsdir="$currdir/_ESSENTIAL/TRAD_FONT/" $dirsub/Final.mp4 -y
 echo "output complete"
 
 epno=$(echo $dirsub | grep -o '[^/]*$')
@@ -120,25 +119,17 @@ unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/"
 mv $dirsub/lbrynet $dirsub/odysee
 echo "downloaded script"
 
-chmod u+x $dirsub/odysee
-startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 &>/dev/null; }
-touch $dirsub/input.csv
-echo 'title,name,file_path,description,channel_name,claim_address,thumbnail' >> $dirsub/input.csv
-echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
-publishlbry() { sudo python3 $currdir/_ESSENTIAL/lbry/upload.py --input=$dirsub/input.csv ; }
+#chmod u+x $dirsub/odysee
+#startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 &>/dev/null; }
+#touch $dirsub/input.csv
+#echo 'title,name,file_path,description,channel_name,claim_address,thumbnail' >> $dirsub/input.csv
+#echo "$title,$epno,$dirsub/Final.mp4,$desc,$(grep -F $epname".chaddr=" $setup | cut -d "=" -f2),$(grep -F $epname".chname=" $setup | cut -d "=" -f2),$cover" >> $dirsub/input.csv
+#publishlbry() { sudo python3 $currdir/_ESSENTIAL/lbry/upload.py --input=$dirsub/input.csv ; }
 #--config=$currdir/_ESSENTIAL/lbry_uploader/config/default.ini ; }
- startlbry & sleep 10 && echo "start" && publishlbry
- #$(grep -F $epname".chname=" $setup | cut -d "=" -f2) "" 
- 
- 
+#startlbry & sleep 10 && echo "start" && publishlbry
+#$(grep -F $epname".chname=" $setup | cut -d "=" -f2) "" 
  ### change final.mp4 to Final.mp4
-
-
-read -p 'wait'
-
-
-
-rm -rf $dirsub/odysee.*
+#rm -rf $dirsub/odysee.*
 
 #back to loop
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')".txt"
