@@ -22,7 +22,7 @@ sed $SEDOPTION '/Sys.updated/d' $setup
 
 dep_check 'opencc' 'brew install opencc'
 dep_check 'ffmpeg' 'brew install ffmpeg'
-if [ ! command -v opencc ] || [ ! command -v ffmpeg ]  > /dev/null; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
+if [ ! command -v opencc > /dev/null ] || [ ! command -v ffmpeg > /dev/null ] ; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
 echo "dependency checked"
 
 for dirsub in $(echo $currdir/*/) ; do
