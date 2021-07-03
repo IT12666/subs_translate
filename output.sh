@@ -113,11 +113,11 @@ echo -e "\n"
 echo "https://www.youtube.com/upload"
 echo "https://odysee.com/$/upload"
 
-echo "downloading script"
-curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/latest/download/lbrynet-linux.zip
-unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/" 
-mv $dirsub/lbrynet $dirsub/odysee
-echo "downloaded script"
+#echo "downloading script"
+#curl -s -L -o $dirsub/odysee.zip https://github.com/lbryio/lbry-sdk/releases/latest/download/lbrynet-linux.zip
+#unzip -qq -o $dirsub"/odysee.zip" -d $dirsub"/" 
+#mv $dirsub/lbrynet $dirsub/odysee
+#echo "downloaded script"
 
 #chmod u+x $dirsub/odysee
 #startlbry() { sudo $dirsub/odysee start --api=127.0.0.1:5279 --streaming-server=127.0.0.1:5280 &>/dev/null; }
