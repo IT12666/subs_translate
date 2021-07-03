@@ -47,11 +47,11 @@ rm -f $dirsub/LATEST/translated.ass
 rm -f $dirsub/LATEST/final.mp4
 
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
-mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
-mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
-mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
-mv $dirsub/LATEST/*.jpeg $dirsub/LATEST/Cover.jpg 2>/dev/null
-mv $dirsub/LATEST/*.jpg $dirsub/LATEST/Cover.jpg 2>/dev/null
+mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 
+mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass
+mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 
+mv $dirsub/LATEST/*.jpeg $dirsub/LATEST/Cover.jpg
+mv $dirsub/LATEST/*.jpg $dirsub/LATEST/Cover.jpg 
 cp $dirsub/LATEST/Source.ass $dirsub/LATEST/Translated.ass 2>/dev/null
 echo "files preparation completed"
 
