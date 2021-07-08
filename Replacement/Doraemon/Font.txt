@@ -1,9 +1,9 @@
 @FZCuYuan-M03S|@PingFangHK-Regular
 A-OTF Shin Maru Go Pro M|PingFangHK-Regular
 Alibaba PuHuiTi|PingFangHK-Regular
-DFGMaruGothic-Md|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
-DFMaruGothic-Md|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
-EPSON 太丸ゴシック体Ｂ|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
+DFGMaruGothic-Md|EPSON-FUTO-MARUGO
+DFMaruGothic-Md|EPSON-FUTO-MARUGO
+EPSON 太丸ゴシック体Ｂ|EPSON-FUTO-MARUGO
 FZCuYuan-M03|FZCuYuan-M03
 FZLanTingHei-B-GBK|FZCuYuan-M03
 FZLanTingYuanS-B-GB|FZCuYuan-M03
@@ -18,8 +18,8 @@ Times New Roman|Times New Roman
 方正少儿_GBK|FZCuYuan-M03
 方正晶准黑|PingFangHK-Regular
 方正琥珀_GBK|Heiti TC
-方正粗圆_GBK|LuoLiTi-DiErBan-2
-方正粗圆简体|LuoLiTi-DiErBan-2
+方正粗圆_GBK|luoliti
+方正粗圆简体|luoliti
 方正综艺简体|PingFangHK-Regular
 楷体|PingFangHK-Regular
 汉仪太极(哆啦)|PingFangHK-Regular
