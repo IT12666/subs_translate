@@ -47,11 +47,11 @@ rm -f $dirsub/LATEST/translated.ass
 rm -f $dirsub/LATEST/final.mp4
 
 mv $dirsub/latest $dirsub/LATEST 2>/dev/null
-mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 
-mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass
-mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 
-mv $dirsub/LATEST/*.jpeg $dirsub/LATEST/Cover.jpg
-mv $dirsub/LATEST/*.jpg $dirsub/LATEST/Cover.jpg 
+mv $dirsub/LATEST/test.* $dirsub/LATEST/test.txt 2>/dev/null
+mv $dirsub/LATEST/*.ass $dirsub/LATEST/Source.ass 2>/dev/null
+mv $dirsub/LATEST/*.mp4 $dirsub/LATEST/Source.mp4 2>/dev/null
+mv $dirsub/LATEST/*.jpeg $dirsub/LATEST/Cover.jpg 2>/dev/null
+mv $dirsub/LATEST/*.jpg $dirsub/LATEST/Cover.jpg 2>/dev/null
 cp $dirsub/LATEST/Source.ass $dirsub/LATEST/Translated.ass 2>/dev/null
 echo "files preparation completed"
 
@@ -92,7 +92,7 @@ echo "translate text fixed"
 if [ ! -f $dirsub/LATEST/test.txt ]; then mv $dirsub/LATEST/ "$dirsub/"$((1+$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}'))) && mkdir $dirsub/LATEST && dirsub=$dirsub/$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}') && echo "Moved dir to "$(echo $dirsub | grep -o '[^/]*$'); else echo 'Test Mode - NOT moving any files' && dirsub=$dirsub/LATEST; fi
 
 echo "making production"
-ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass $dirsub/Final.mp4 -y
+ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass $dirsub/Final.mp4 -y -stats
 echo "output complete"
 
 epno=$(echo $dirsub | grep -o '[^/]*$')
