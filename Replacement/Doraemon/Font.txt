@@ -11,7 +11,7 @@ FZSJ-WOXWSYSD|FZCuYuan-M03
 FZYunDongHeiS-M-GB|FZCuYuan-M03
 Moonstar|PingFangHK-Regular
 Times New Roman|Times New Roman
-华康少女文字W5-A|JasonHandwriting2 Regular
+华康少女文字W5-A|PingFangHK-Regular
 微软雅黑|PingFangHK-Regular
 方正兰亭粗黑_GBK|PingFangHK-Regular
 方正喵呜体|PingFangHK-Regular
