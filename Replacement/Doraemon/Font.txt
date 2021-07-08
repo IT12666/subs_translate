@@ -18,8 +18,8 @@ Times New Roman|Times New Roman
 方正少儿_GBK|FZCuYuan-M03
 方正晶准黑|PingFangHK-Regular
 方正琥珀_GBK|Heiti TC
-方正粗圆_GBK|luoliti-Version1.00
-方正粗圆简体|luoliti-Version1.00
+方正粗圆_GBK|luoliti
+方正粗圆简体|luoliti
 方正综艺简体|PingFangHK-Regular
 楷体|PingFangHK-Regular
 汉仪太极(哆啦)|PingFangHK-Regular
