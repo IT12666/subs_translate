@@ -4,24 +4,24 @@ Alibaba PuHuiTi|PingFangHK-Regular
 DFGMaruGothic-Md|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
 DFMaruGothic-Md|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
 EPSON 太丸ゴシック体Ｂ|EPSON ëæä€ÉSÉVÉbÉNëÃÇa
-FZCuYuan-M03|jf-openhuninn-1.1
-FZLanTingHei-B-GBK|jf-openhuninn-1.1
-FZLanTingYuanS-B-GB|jf-openhuninn-1.1
-FZSJ-WOXWSYSD|jf-openhuninn-1.1
-FZYunDongHeiS-M-GB|jf-openhuninn-1.1
+FZCuYuan-M03|FZCuYuan-M03
+FZLanTingHei-B-GBK|FZCuYuan-M03
+FZLanTingYuanS-B-GB|FZCuYuan-M03
+FZSJ-WOXWSYSD|FZCuYuan-M03
+FZYunDongHeiS-M-GB|FZCuYuan-M03
 Moonstar|PingFangHK-Regular
 Times New Roman|Times New Roman
 华康少女文字W5-A|JasonHandwriting2 Regular
 微软雅黑|PingFangHK-Regular
 方正兰亭粗黑_GBK|PingFangHK-Regular
 方正喵呜体|PingFangHK-Regular
-方正少儿_GBK|jf-openhuninn-1.1
+方正少儿_GBK|FZCuYuan-M03
 方正晶准黑|PingFangHK-Regular
 方正琥珀_GBK|Heiti TC
-方正粗圆_GBK|JasonHandwriting2 Regular
-方正粗圆简体|JasonHandwriting2 Regular
+方正粗圆_GBK|萝莉体 第二版
+方正粗圆简体|萝莉体 第二版
 方正综艺简体|PingFangHK-Regular
 楷体|PingFangHK-Regular
 汉仪太极(哆啦)|PingFangHK-Regular
-汉仪超粗圆简|jf-openhuninn-1.1
-长城特粗圆体|jf-openhuninn-1.1
+汉仪超粗圆简|FZCuYuan-M03
+长城特粗圆体|FZCuYuan-M03
