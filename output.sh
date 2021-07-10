@@ -92,7 +92,7 @@ echo "translate text fixed"
 if [ ! -f $dirsub/LATEST/test.txt ]; then mv $dirsub/LATEST/ "$dirsub/"$((1+$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}'))) && mkdir $dirsub/LATEST && dirsub=$dirsub/$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}') && echo "Moved dir to "$(echo $dirsub | grep -o '[^/]*$'); else echo 'Test Mode - NOT moving any files' && dirsub=$dirsub/LATEST; fi
 
 echo "making production"
-ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass $dirsub/Final.mp4 -y -stats -c:a copy -preset ultrafast -f tee | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')"_ffmpeg.txt"
+ffmpeg -i $dirsub/Source.mp4 -vf ass=$dirsub/Translated.ass $dirsub/Final.mp4 -y -stats -c:a copy -preset ultrafast -f tee &> "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')"_ffmpeg.txt"
 echo "output complete"
 
 epno=$(echo $dirsub | grep -o '[^/]*$')
@@ -135,6 +135,6 @@ echo "https://odysee.com/$/upload"
 fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')"_script.txt"
 done
 echo -e "\n"
-read -t 4 -n 1 -p 'done'
+echo 'done'
 exit 0
 
