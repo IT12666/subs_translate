@@ -26,4 +26,3 @@ Times New Roman|Times New Roman
 汉仪超粗圆简|FZCuYuan-M03
 长城特粗圆体|FZCuYuan-M03
 华文琥珀|PingFangHK-Regular
-Windows TV MaruGothic|PingFangHK-Regular
