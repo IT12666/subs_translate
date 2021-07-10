@@ -25,7 +25,7 @@ dep_check 'ffmpeg' 'brew install ffmpeg'
 #if [ ! command -v opencc > /dev/null ] || [ ! command -v ffmpeg > /dev/null ] ; then echo "could not install packages, please make sure you install brew correctly." && exit 0; fi
 echo "dependency checked"
 
-for logfile in $(ls -t1 $currdir/_ESSENTIAL/log/ | head -15 ); do echo rm -f $currdir/_ESSENTIAL/log/$logfile; done
+for logfile in $(ls -t1 $currdir/_ESSENTIAL/log/ | tail -n +15 ); do echo rm -f $currdir/_ESSENTIAL/log/$logfile; done
 echo "deleted old logs"
 
 
