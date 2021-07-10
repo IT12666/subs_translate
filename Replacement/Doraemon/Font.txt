@@ -4,18 +4,18 @@ Alibaba PuHuiTi|PingFangHK-Regular
 DFGMaruGothic-Md|EPSON-FUTO-MARUGO
 DFMaruGothic-Md|EPSON-FUTO-MARUGO
 EPSON 太丸ゴシック体Ｂ|EPSON-FUTO-MARUGO
-FZCuYuan-M03|FZY4K--GBK1-0
-FZLanTingHei-B-GBK|FZY4K--GBK1-0
-FZLanTingYuanS-B-GB|FZY4K--GBK1-0
-FZSJ-WOXWSYSD|FZY4K--GBK1-0
-FZYunDongHeiS-M-GB|FZY4K--GBK1-0
+FZCuYuan-M03|FZCuYuan-M03
+FZLanTingHei-B-GBK|FZCuYuan-M03
+FZLanTingYuanS-B-GB|FZCuYuan-M03
+FZSJ-WOXWSYSD|FZCuYuan-M03
+FZYunDongHeiS-M-GB|FZCuYuan-M03
 Moonstar|PingFangHK-Regular
 Times New Roman|Times New Roman
 华康少女文字W5-A|PingFangHK-Regular
 微软雅黑|PingFangHK-Regular
 方正兰亭粗黑_GBK|PingFangHK-Regular
 方正喵呜体|PingFangHK-Regular
-方正少儿_GBK|FZY4K--GBK1-0
+方正少儿_GBK|FZCuYuan-M03
 方正晶准黑|PingFangHK-Regular
 方正琥珀_GBK|Heiti TC
 方正粗圆_GBK|luoliti
@@ -23,5 +23,5 @@ Times New Roman|Times New Roman
 方正综艺简体|PingFangHK-Regular
 楷体|PingFangHK-Regular
 汉仪太极(哆啦)|PingFangHK-Regular
-汉仪超粗圆简|FZY4K--GBK1-0
-长城特粗圆体|FZY4K--GBK1-0
+汉仪超粗圆简|FZCuYuan-M03
+长城特粗圆体|FZCuYuan-M03
