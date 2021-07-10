@@ -11,7 +11,7 @@ runupdate() { curl -s -L -o $currdir/update.sh https://raw.githubusercontent.com
 chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exec $currdir/update.sh
 }
 
-if [ ! -f $setup ]; then runupdate; fi
+if [ ! -f $setup ]; then runupdate; fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')"_update.txt"
 if [ "$(grep -F "Sys.updated=" $setup | cut -d "=" -f2)" == "1" ]; then echo "Latest Version"; else runupdate; fi 
 
 dep_check() { if ! command -v $1 > /dev/null; then echo $1 is missing
