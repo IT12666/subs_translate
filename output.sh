@@ -26,7 +26,6 @@ dep_check 'ffmpeg' 'brew install ffmpeg'
 echo "dependency checked"
 
 ls -t1 $currdir/_ESSENTIAL/log/ | tail -n +22 | xargs rm -f
-rm $currdir/_ESSENTIAL/log/*(Om[1,-4])
 echo "deleted old logs"
 
 
