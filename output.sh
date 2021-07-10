@@ -11,7 +11,7 @@ runupdate() { curl -s -L -o $currdir/update.sh https://raw.githubusercontent.com
 chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exec $currdir/update.sh
 }
 
-if [ ! -f $setup ]; then runupdate; fi | tee "$currdir/_ESSENTIAL/log/"$(date +'%m-%d-%Y-%T')"_update.txt"
+if [ ! -f $setup ]; then runupdate; fi
 if [ "$(grep -F "Sys.updated=" $setup | cut -d "=" -f2)" == "1" ]; then echo "Latest Version"; else runupdate; fi 
 
 dep_check() { if ! command -v $1 > /dev/null; then echo $1 is missing
@@ -26,7 +26,7 @@ dep_check 'ffmpeg' 'brew install ffmpeg'
 echo "dependency checked"
 
 
-ls -d -1tr $currdir/_ESSENTIAL/log/ | head -n -15 | xargs -d '\n' echo rm -f
+ls -d -1tr $currdir/_ESSENTIAL/log/ | head -n -15 | xargs -d '\n' rm -f
 echo "deleted old logs"
 
 
