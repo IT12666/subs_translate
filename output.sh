@@ -11,8 +11,6 @@ runupdate() { curl -s -L -o $currdir/update.sh https://raw.githubusercontent.com
 chmod +x $currdir/update.sh && exec $currdir/update.sh && echo "Updating" && exec $currdir/update.sh
 }
 
-read -p 'aaa'
-
 if [ ! -f $setup ]; then runupdate; fi
 if [ "$(grep -F "Sys.updated=" $setup | cut -d "=" -f2)" == "1" ]; then echo "Latest Version"; else runupdate; fi 
 
@@ -29,8 +27,6 @@ echo "dependency checked"
 
 for logfile in $(ls -t1 $currdir/_ESSENTIAL/log/ | tail -n +10 ); do rm -f $currdir/_ESSENTIAL/log/$logfile; done 2>/dev/null
 echo "deleted old logs"
-
-read -p 'bbb'
 
 for dirsub in $(echo $currdir/*/) ; do
 if [ -d $dirsub"/LATEST" ] 
