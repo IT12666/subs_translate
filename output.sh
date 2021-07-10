@@ -63,7 +63,7 @@ echo "files preparation completed"
 if [ ! -f $dirsub/LATEST/Source.ass ] || [ ! -f $dirsub/LATEST/Source.mp4 ] ; then echo "Error: no file found" && continue; fi
 if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATEST/Source.ass; then echo "dir checking complete"; else rm -f $dirsub/LATEST/Translated.ass && echo "Error: no keyword found" && continue; fi
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Font.txt"
+while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/$(basename $dirsub)/Font.txt"
 echo "translated font"
 
 if [ ! -f $dirsub/LATEST/Cover.jpg ] ; then echo "No Cover found, Downloading..." && curl -s -L -o $dirsub/LATEST/Cover.jpg $(grep -F $epname".cover=" $setup | cut -d "=" -f2) ; else echo "Uploading Cover" && cover=$(curl -s --upload-file $dirsub/LATEST/Cover.jpg https://transfer.sh/yysub.jpg 2>/dev/null) ; fi
@@ -74,10 +74,10 @@ filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION_L
 sed $SEDOPTION "s!$filech!Source.mp4!"  $dirsub/LATEST/Translated.ass
 echo "changed Aegisub dir"
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/"$(basename $dirsub)"/Style.txt"
+while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/$(basename $dirsub)/Style.txt"
 echo "style transformed"
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
+while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/Typo.txt"
 echo "translate text fixed"
 
 opencc -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
@@ -86,7 +86,7 @@ echo "translated text"
 title=$(grep -F "標題" $dirsub/LATEST/Translated.ass | grep -F "Dialogue" | awk '!/bord0/' | sed $SEDOPTION_L 's/.*,,0,0,0,,//' | rev | cut -d '}' -f1 | rev | uniq | grep -v '櫻桃小丸子' | sed $SEDOPTION_L 's/ //g' | awk 'NF' | tr '\r' ',' | tr '\n' ',' | sed $SEDOPTION_L 's/,,/,/g' | sed $SEDOPTION_L 's/,/ + /g' | cut -f1-2 -d"+" | sed 's/.\{2\}$//' | sed $SEDOPTION_L 's/「//g' | sed $SEDOPTION_L 's/」篇//g' | sed $SEDOPTION_L 's/」//g' )
 echo "title grabbed ($title)"
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < $(dirname $dirsub)"/_ESSENTIAL/Replacement/Typo.txt"
+while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/Typo.txt"
 echo "translate text fixed"
 
 if [ ! -f $dirsub/LATEST/test.txt ]; then mv $dirsub/LATEST/ "$dirsub/"$((1+$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}'))) && mkdir $dirsub/LATEST && dirsub=$dirsub/$(ls $dirsub | sort -nr | head -n1 | grep -Eo '[0-9]{1,5}') && echo "Moved dir to "$(echo $dirsub | grep -o '[^/]*$'); else echo 'Test Mode - NOT moving any files' && dirsub=$dirsub/LATEST; fi
