@@ -16,7 +16,7 @@ sed -ri "s!n.n.n.n!$address!g" /etc/xl2tpd/xl2tpd.conf
 rm -f /etc/tmp.conf
 #xl2tpd-2
 echo "xl2tpd-2"
-sudo curl -s -L -o /etc/options.l2tpd.client https://raw.githubusercontent.com/IT12666/subs_translate/Test/options.l2tpd.client
+sudo curl -s -L -o /etc/ppp/options.l2tpd.client https://raw.githubusercontent.com/IT12666/subs_translate/Test/options.l2tpd.client
 #Connect
 echo "Connecting"
 sudo mkdir -p /var/run/xl2tpd && sudo touch /var/run/xl2tpd/l2tp-control
