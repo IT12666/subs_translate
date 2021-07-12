@@ -12,5 +12,5 @@ defaultroute
 usepeerdns
 debug
 connect-delay 5000
-name your_user_name
-password your_password
+name vpn
+password vpn
