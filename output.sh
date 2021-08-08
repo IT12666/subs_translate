@@ -69,8 +69,8 @@ if [ ! -f $dirsub/LATEST/Cover.jpg ] ; then echo "No Cover found, Downloading...
 : "${cover:= $(grep -F $epname".cover=" $setup | cut -d "=" -f2)}"
 echo "uploaded cover"
 
-filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION_L 's/Video File: //g')
-sed $SEDOPTION "s!$filech!Source.mp4!"  $dirsub/LATEST/Translated.ass
+filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION_L 's/Video File: //g') 2>/dev/null
+sed $SEDOPTION "s!$filech!Source.mp4!"  $dirsub/LATEST/Translated.ass 2>/dev/null
 echo "changed Aegisub dir"
 
 while read line; do source=$(echo "$line" | rev | cut -d'|' -f 2 | rev | sed 's/\([^\\]\)&/\1\\\&/g' | sed 's/[][]/\\&/g') && result=$(echo "$line" | cut -d'|' -f 2 | sed 's/\([^\\]\)&/\1\\\&/g' | sed 's/[][]/\\&/g') && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/$(basename $dirsub)/Style.txt"
