@@ -73,10 +73,10 @@ filech=$(grep -F "Video File: " $dirsub/LATEST/Translated.ass | sed $SEDOPTION_L
 sed $SEDOPTION "s!$filech!Source.mp4!"  $dirsub/LATEST/Translated.ass
 echo "changed Aegisub dir"
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/$(basename $dirsub)/Style.txt"
+while read line; do source=$(echo "$line" | rev | cut -d'|' -f 2 | rev) && result=$(echo "$line" | cut -d'|' -f 2) && echo sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/$(basename $dirsub)/Style.txt"
 echo "style transformed"
 
-while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/Typo.txt"
+while read line; do source=$(echo "$line" | rev | cut -d'|' -f 2 | rev) && result=$(echo "$line" | cut -d'|' -f 2) && echo sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/Typo.txt"
 echo "translate text fixed"
 
 opencc -c s2hk -i $dirsub/LATEST/Translated.ass -o $dirsub/LATEST/Translated.ass
