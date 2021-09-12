@@ -59,7 +59,8 @@ cp $dirsub/LATEST/Source.ass $dirsub/LATEST/Translated.ass 2>/dev/null
 echo "files preparation completed"
 
 
-if [ ! -f $dirsub/LATEST/Source.ass ] || [ ! -f $dirsub/LATEST/Source.mp4 ] ; then echo "Error: no file found" && continue; fi
+if [ ! -f $dirsub/LATEST/Source.ass ] ; then echo "Error: no file found" && continue; fi
+//|| [ ! -f $dirsub/LATEST/Source.mp4 ]
 if grep -q "$(grep -F $epname".keywords=" $setup | cut -d "=" -f2)" $dirsub/LATEST/Source.ass; then echo "dir checking complete"; else rm -f $dirsub/LATEST/Translated.ass && echo "Error: no keyword found" && continue; fi
 
 while read line; do source=$(echo $line | rev | cut -d'|' -f 2 | rev) && result=$(echo $line | cut -d'|' -f 2) && sed $SEDOPTION "s!$source!$result!g"  $dirsub/LATEST/Translated.ass; done < "$currdir/_ESSENTIAL/Replacement/$(basename $dirsub)/Font.txt"
